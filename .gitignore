@@ -2,3 +2,5 @@ venv/
 pilots.json
 .ipynb*
 numbers.csv
+parse_data.csv
+numbers.csv
