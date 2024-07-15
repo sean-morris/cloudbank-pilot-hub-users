@@ -4,3 +4,5 @@ pilots.json
 numbers.csv
 parse_data.csv
 numbers.csv
+.conda_env
+.vscode/settings.json
