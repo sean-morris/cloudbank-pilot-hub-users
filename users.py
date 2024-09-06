@@ -11,9 +11,14 @@ def filter_users(func, users):
     return len(list(filter(func, users)))
 
 # Function to convert string to datetime
-def convert(datetime_str):     
-    date_time_obj = datetime.strptime(datetime_str, '%Y-%m-%dT%H:%M:%S.%fZ')
+def convert(datetime_str):
+    try:
+        date_time_obj = datetime.strptime(datetime_str, '%Y-%m-%dT%H:%M:%S.%fZ')
+    except Exception as e:
+        datetime_str = datetime_str[:-1] + ".0000Z"
+        date_time_obj = datetime.strptime(datetime_str, '%Y-%m-%dT%H:%M:%S.%fZ')
     return date_time_obj
+
 
 def users_active_since_date(begin_d, end_d, users):
     users = list(filter(lambda user: user["last_activity"], users))
@@ -46,7 +51,8 @@ def process_pilot(pilot):
         p["number_all_users_ever_active_spring"] = users_active_since_date(spring_begin_date, spring_end_date, users)
         p["number_all_users_2023_active_fall"] = users_active_since_date(fall_2023_begin_date, fall_2023_end_date, users)
         p["number_all_users_2024_active_spring"] = users_active_since_date(spring_2024_begin_date, spring_2024_end_date, users)
-        row= list([pilot["name"],p["number_all_users"],p["number_all_users_ever_active"],p["number_all_users_ever_active_fall"],p["number_all_users_ever_active_spring"],p["number_all_users_2023_active_fall"],p["number_all_users_2024_active_spring"]])
+        p["number_all_users_2024_active_fall"] = users_active_since_date(fall_2024_begin_date, fall_2024_end_date, users)
+        row= list([pilot["name"],p["number_all_users"],p["number_all_users_ever_active"],p["number_all_users_ever_active_fall"],p["number_all_users_ever_active_spring"],p["number_all_users_2023_active_fall"],p["number_all_users_2024_active_spring"], p["number_all_users_2024_active_fall"]])
         csv_writer.writerow(row)
     
     stats[pilot["url"]] = p
@@ -60,6 +66,8 @@ fall_2023_begin_date = datetime(2023, 7, 15, 0, 0, 0, 0)
 fall_2023_end_date = datetime(2023, 12, 31, 0, 0, 0, 0)
 spring_2024_begin_date = datetime(2024, 1, 1, 0, 0, 0, 0)
 spring_2024_end_date = datetime(2024, 6, 1, 0, 0, 0, 0)
+fall_2024_begin_date = datetime(2024, 7, 15, 0, 0, 0, 0)
+fall_2024_end_date = datetime(2024, 12, 31, 0, 0, 0, 0)
 process_all = True
 if len(sys.argv) > 1:
     process_all = False
@@ -68,7 +76,7 @@ if len(sys.argv) > 1:
 # create the csv writer object
 csv_writer = csv.writer(data_file)
 stats = {}
-header = list(["college","all-users", "all-users-ever-active", "all-users-active-fall(since 2022-07-15)","all-users-active-spring(since 2023-01-01)","all-users-active-fall(since 2023-07-15)", "all-users-active-spring(since 2024-01-01)", ])
+header = list(["college","all-users", "all-users-ever-active", "all-users-active-fall(since 2022-07-15)", "all-users-active-spring(since 2023-01-01)","all-users-active-fall(since 2023-07-15)", "all-users-active-spring(since 2024-01-01)", "all-users-active-fall(since 2024-07-15)"])
 csv_writer.writerow(header)
 
 f = open('pilots.json')
