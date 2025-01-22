@@ -1,20 +1,19 @@
 import csv
 import sys
 import json
-import datetime as d
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 import requests
 
 
 def filter_users(func, users):
     return len(list(filter(func, users)))
 
+
 # Function to convert string to datetime
 def convert(datetime_str):
     try:
         date_time_obj = datetime.strptime(datetime_str, '%Y-%m-%dT%H:%M:%S.%fZ')
-    except Exception as e:
+    except Exception:
         datetime_str = datetime_str[:-1] + ".0000Z"
         date_time_obj = datetime.strptime(datetime_str, '%Y-%m-%dT%H:%M:%S.%fZ')
     return date_time_obj
@@ -22,68 +21,105 @@ def convert(datetime_str):
 
 def users_active_since_date(begin_d, end_d, users):
     users = list(filter(lambda user: user["last_activity"], users))
+
     def process(user):
         la = convert(user["last_activity"])
-        return la > begin_d and la <  end_d
+        return la > begin_d and la < end_d
+
     return len(list(filter(lambda user: process(user), users)))
 
+
 def get_users(url, token):
-    api_url =f'http://{url}.cloudbank.2i2c.cloud/hub/api'
+    api_url = f'http://{url}.cloudbank.2i2c.cloud/hub/api'
     if url == "mills":
-        api_url =f'http://datahub.{url}.edu/hub/api'
+        api_url = f'http://datahub.{url}.edu/hub/api'
     r = requests.get(api_url + '/users',
-        headers={
-            'Authorization': f'token {token}',
-        }
-    )
+                        headers = {
+                            'Authorization': f'token {token}',
+                        }
+                    )
     r.raise_for_status()
     users = r.json()
     return users
 
-def process_pilot(pilot):
+
+def process_pilot(pilot, dates, stats):
     p = {}
     users = get_users(pilot["url"], pilot["token"]) if pilot["token"] else None
     if users:
-        users = list(filter(lambda user: not "admin" in user["roles"] and user['admin'] is False and "service-hub" not in user['name'] and "deployment-service" not in user['name'], users))
+        users = list(filter(lambda user: "admin" not in user["roles"] and user['admin'] is False and "service-hub" not in user['name'] and "deployment-service" not in user['name'], users))
+        p["name"] = pilot["name"]
         p["number_all_users"] = len(users)
+        stats["all-users"][0] += p["number_all_users"]
         p["number_all_users_ever_active"] = filter_users(lambda user: user["last_activity"], users)
-        p["number_all_users_ever_active_fall"] = users_active_since_date(fall_begin_date, fall_end_date, users)
-        p["number_all_users_ever_active_spring"] = users_active_since_date(spring_begin_date, spring_end_date, users)
-        p["number_all_users_2023_active_fall"] = users_active_since_date(fall_2023_begin_date, fall_2023_end_date, users)
-        p["number_all_users_2024_active_spring"] = users_active_since_date(spring_2024_begin_date, spring_2024_end_date, users)
-        p["number_all_users_2024_active_fall"] = users_active_since_date(fall_2024_begin_date, fall_2024_end_date, users)
-        row= list([pilot["name"],p["number_all_users"],p["number_all_users_ever_active"],p["number_all_users_ever_active_fall"],p["number_all_users_ever_active_spring"],p["number_all_users_2023_active_fall"],p["number_all_users_2024_active_spring"], p["number_all_users_2024_active_fall"]])
-        csv_writer.writerow(row)
-    
-    stats[pilot["url"]] = p
+        stats["all-users-ever-active"][0] += p["number_all_users_ever_active"]
+        for term, begin, end in dates:
+            p[term] = users_active_since_date(begin, end, users)
+            stats[term][0] += p[term]
+            if p[term] > 5:
+                stats[term][1] += 1
+    return p
 
-data_file = open('numbers.csv', 'w')
-fall_begin_date = datetime(2022, 7, 15, 0, 0, 0, 0)
-fall_end_date = datetime(2022, 12, 31, 0, 0, 0, 0)
-spring_begin_date = datetime(2023, 1, 1, 0, 0, 0, 0)
-spring_end_date = datetime(2023, 6, 1, 0, 0, 0, 0)
-fall_2023_begin_date = datetime(2023, 7, 15, 0, 0, 0, 0)
-fall_2023_end_date = datetime(2023, 12, 31, 0, 0, 0, 0)
-spring_2024_begin_date = datetime(2024, 1, 1, 0, 0, 0, 0)
-spring_2024_end_date = datetime(2024, 6, 1, 0, 0, 0, 0)
-fall_2024_begin_date = datetime(2024, 7, 15, 0, 0, 0, 0)
-fall_2024_end_date = datetime(2024, 12, 31, 0, 0, 0, 0)
+
+def generate_dates(start_year, end_year):
+    dates = []
+    for year in range(start_year, end_year + 1):
+        # Fall semester
+        fall_begin = datetime(year, 7, 15, 0, 0, 0, 0)
+        fall_end = datetime(year, 12, 31, 0, 0, 0, 0)
+        dates.append((f"fall_{year}", fall_begin, fall_end))
+
+        # Spring semester (spills into next year)
+        spring_begin = datetime(year + 1, 1, 1, 0, 0, 0, 0)
+        spring_end = datetime(year + 1, 7, 14, 0, 0, 0, 0)
+        dates.append((f"spring_{year + 1}", spring_begin, spring_end))
+    return dates
+
+
+def config_stats(dates):
+    s = {}
+    s["all-users"] = [0, 0]
+    s["all-users-ever-active"] = [0, 0]
+    for term, begin, end in dates:
+        s[term] = [0, 0]
+    return s
+
+
+def config_csvwriter(dates, data_file):
+    # create the csv writer object
+    csv_writer = csv.writer(data_file)
+
+    header = list(["college", "all-users", "all-users-ever-active"])
+    header.extend(list(map(lambda row: row[0], dates)))
+    csv_writer.writerow(header)
+    return csv_writer
+
+
+def write_csvwriter_stats(csv_writer, stats):
+    row = ["Total"] + list(map(lambda c: c[0], stats.values()))
+    csv_writer.writerow(row)
+    row = ["Total Schools > 5 Users"] + list(map(lambda c: c[1], stats.values()))
+    csv_writer.writerow(row)
+
+
+def main(process_all, one):
+    data_file = open('numbers.csv', 'w')
+    dates = generate_dates(2022, 2024)
+    stats = config_stats(dates)
+    csv_writer = config_csvwriter(dates, data_file)
+    f = open('pilots.json')
+    data = json.load(f)
+    for pilot in data["pilots"]:
+        if process_all or pilot["url"] == one:
+            p = process_pilot(pilot, dates, stats)
+            csv_writer.writerow(p.values())
+    write_csvwriter_stats(csv_writer, stats)
+    data_file.close()
+
+
 process_all = True
+one = None
 if len(sys.argv) > 1:
     process_all = False
     one = sys.argv[1]
-
-# create the csv writer object
-csv_writer = csv.writer(data_file)
-stats = {}
-header = list(["college","all-users", "all-users-ever-active", "all-users-active-fall(since 2022-07-15)", "all-users-active-spring(since 2023-01-01)","all-users-active-fall(since 2023-07-15)", "all-users-active-spring(since 2024-01-01)", "all-users-active-fall(since 2024-07-15)"])
-csv_writer.writerow(header)
-
-f = open('pilots.json')
-data = json.load(f)
-
-for pilot in data["pilots"]:
-    if process_all or pilot["url"] == one:
-        process_pilot(pilot)
- 
-data_file.close()
+main(process_all, one)

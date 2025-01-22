@@ -20,6 +20,7 @@ for doc in docs:
     year, month, date = list(map(lambda item: int(item), ts.split(" ")[0].split("-")))
     week = datetime.date(year, month, date).isocalendar()[1]
     two_digit_month = "{:02d}".format(month)
+    two_digit_date = "{:02d}".format(date)
     key = f"{year}-{two_digit_month} {week}"
     num_notebooks = int(rec.get('message'))
     if key not in weeks_dict:
