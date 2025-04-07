@@ -21,7 +21,8 @@ for doc in docs:
     week = datetime.date(year, month, date).isocalendar()[1]
     two_digit_month = "{:02d}".format(month)
     two_digit_date = "{:02d}".format(date)
-    key = f"{year}-{two_digit_month} {week}"
+    two_digit_week = "{:02d}".format(week)
+    key = f"{year}-{two_digit_month} {two_digit_week}"
     num_notebooks = int(rec.get('message'))
     if key not in weeks_dict:
         weeks_dict[key] = [1, num_notebooks]

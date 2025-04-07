@@ -30,17 +30,26 @@ def users_active_since_date(begin_d, end_d, users):
 
 
 def get_users(url, token):
+    all_data = []
     api_url = f'http://{url}.cloudbank.2i2c.cloud/hub/api'
     if url == "mills":
         api_url = f'http://datahub.{url}.edu/hub/api'
-    r = requests.get(api_url + '/users',
+    for offset in range(0, 600, 200):
+        r = requests.get(api_url + f'/users?limit=200&offset={offset}',
                         headers = {
-                            'Authorization': f'token {token}',
+                            'Authorization': f'token {token}'
                         }
                     )
-    r.raise_for_status()
-    users = r.json()
-    return users
+        if r.status_code == 403:
+            print("403 error")
+            return []
+        if r.status_code != 200:
+            print(r.status_code)
+            print(r.text)
+            raise Exception("Error getting users")
+        r.raise_for_status()
+        all_data.extend(r.json())
+    return all_data
 
 
 def process_pilot(pilot, dates, stats):
@@ -104,6 +113,7 @@ def write_csvwriter_stats(csv_writer, stats):
 
 def main(process_all, one):
     data_file = open('numbers.csv', 'w')
+    # 2024 would be Fall 2024 and Spring 2025
     dates = generate_dates(2022, 2024)
     stats = config_stats(dates)
     csv_writer = config_csvwriter(dates, data_file)
