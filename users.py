@@ -112,7 +112,7 @@ def write_csvwriter_stats(csv_writer, stats):
 
 
 def main(process_all, one):
-    data_file = open('numbers.csv', 'w')
+    data_file = open('users.csv', 'w')
     # 2024 would be Fall 2024 and Spring 2025
     dates = generate_dates(2022, 2024)
     stats = config_stats(dates)
@@ -127,9 +127,9 @@ def main(process_all, one):
     data_file.close()
 
 
-process_all = True
-one = None
-if len(sys.argv) > 1:
-    process_all = False
-    one = sys.argv[1]
-main(process_all, one)
+# process_all = True
+# one = None
+# if len(sys.argv) > 1:
+#     process_all = False
+#     one = sys.argv[1]
+# main(process_all, one)

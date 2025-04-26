@@ -7,3 +7,7 @@ numbers.csv
 .conda_env
 .vscode/settings.json
 .DS_Store
+users.py
+__pycache__
+otter_standalone_use.csv
+users.csv
