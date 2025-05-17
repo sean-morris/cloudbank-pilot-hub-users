@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import threading
 import users
 import otter_standalone_use
