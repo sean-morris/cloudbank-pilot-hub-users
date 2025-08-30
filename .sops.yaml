@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: pilots.json$
+    encrypted_regex: '^(token)$'
+    gcp_kms: projects/cal-icor-hubs/locations/global/keyRings/jupyterhubs/cryptoKeys/sops
