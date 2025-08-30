@@ -1,15 +1,52 @@
+"""
+users.py
+
+Collects user statistics from multiple JupyterHub deployments for various colleges and universities.
+Fetches user data via REST API, computes statistics for each academic term, and writes results to a CSV file.
+
+Usage:
+    python users.py           # Process all pilots
+    python users.py <hub>     # Process a single pilot by hub name
+
+Outputs:
+    - users.csv: User statistics per pilot and term
+
+Requires:
+    - pilots.json: Decrypted pilot tokens and metadata
+"""
+
 import csv
 import json
+import sys
 from datetime import datetime
 import requests
 
 
 def filter_users(func, users):
+    """
+    Returns the count of users matching the filter function.
+
+    Args:
+        func (callable): Function to filter users.
+        users (list): List of user dicts.
+
+    Returns:
+        int: Number of users matching the filter.
+    """
     return len(list(filter(func, users)))
 
 
 # Function to convert string to datetime
 def convert(datetime_str):
+    """
+    Converts an ISO datetime string to a datetime object.
+
+    Args:
+        datetime_str (str): Datetime string in ISO format.
+
+    Returns:
+        datetime: Parsed datetime object.
+    """
     try:
         date_time_obj = datetime.strptime(datetime_str, '%Y-%m-%dT%H:%M:%S.%fZ')
     except Exception:
@@ -19,6 +56,17 @@ def convert(datetime_str):
 
 
 def users_active_since_date(begin_d, end_d, users):
+    """
+    Counts users with last activity between begin_d and end_d.
+
+    Args:
+        begin_d (datetime): Start date.
+        end_d (datetime): End date.
+        users (list): List of user dicts.
+
+    Returns:
+        int: Number of active users in the date range.
+    """
     users = list(filter(lambda user: user["last_activity"], users))
 
     def process(user):
@@ -29,6 +77,17 @@ def users_active_since_date(begin_d, end_d, users):
 
 
 def get_users(url, where, token):
+    """
+    Fetches user data from the JupyterHub API.
+
+    Args:
+        url (str): Hub URL prefix.
+        where (str): Deployment type.
+        token (str): API token.
+
+    Returns:
+        list: List of user dicts.
+    """
     all_data = []
     api_url = f'http://{url}.cloudbank.2i2c.cloud/hub/api'
     if url == "mills":
@@ -55,6 +114,17 @@ def get_users(url, where, token):
 
 
 def process_pilot(pilot, dates, stats):
+    """
+    Processes a single pilot, collecting user statistics for each term.
+
+    Args:
+        pilot (dict): Pilot metadata.
+        dates (list): List of (term, begin, end) tuples.
+        stats (dict): Aggregated statistics.
+
+    Returns:
+        dict: Statistics for the pilot.
+    """
     p = {}
     print(f"Processing {pilot['name']} ({pilot['url']})")
     users = get_users(pilot["url"], pilot["where"], pilot["token"])
@@ -75,6 +145,16 @@ def process_pilot(pilot, dates, stats):
 
 
 def generate_dates(start_year, end_year):
+    """
+    Generates academic term date ranges for summer, fall, and spring.
+
+    Args:
+        start_year (int): Start year.
+        end_year (int): End year.
+
+    Returns:
+        list: List of (term, begin, end) tuples.
+    """
     dates = []
     for year in range(start_year, end_year + 1):
         # Summer semester
@@ -95,6 +175,15 @@ def generate_dates(start_year, end_year):
 
 
 def config_stats(dates):
+    """
+    Initializes statistics dictionary for all terms.
+
+    Args:
+        dates (list): List of (term, begin, end) tuples.
+
+    Returns:
+        dict: Stats dictionary.
+    """
     s = {}
     s["all-users"] = [0, 0]
     s["all-users-ever-active"] = [0, 0]
@@ -104,7 +193,16 @@ def config_stats(dates):
 
 
 def config_csvwriter(dates, data_file):
-    # create the csv writer object
+    """
+    Configures CSV writer and writes header row.
+
+    Args:
+        dates (list): List of (term, begin, end) tuples.
+        data_file (file): Open file object.
+
+    Returns:
+        csv.writer: CSV writer object.
+    """
     csv_writer = csv.writer(data_file)
 
     header = list(["college", "where", "all-users", "all-users-ever-active"])
@@ -114,16 +212,48 @@ def config_csvwriter(dates, data_file):
 
 
 def write_csvwriter_stats(csv_writer, stats):
+    """
+    Writes summary statistics rows to the CSV file.
+
+    Args:
+        csv_writer (csv.writer): CSV writer object.
+        stats (dict): Aggregated statistics.
+    """
     row = ["Total", ""] + list(map(lambda c: c[0], stats.values()))
     csv_writer.writerow(row)
     row = ["Total Schools > 5 Users", ""] + list(map(lambda c: c[1], stats.values()))
     csv_writer.writerow(row)
 
 
+def get_current_academic_year():
+    """
+    Gets the first year of the current academmic year: 
+    Current Academic year: 2025-26 ==> 2025
+    
+    Returns:
+        integer: beginning year of current academic year
+    """
+    today = datetime.today()
+    year = today.year
+    month = today.month
+
+    # Academic year starts in summer (June)
+    if month >= 6:
+        return year
+    else:
+        return year - 1
+
+
 def main(process_all, one):
+    """
+    Main entry point. Processes pilots and writes statistics to CSV.
+
+    Args:
+        process_all (bool): If True, process all pilots. If False, process one.
+        one (str): Hub name to process if not all.
+    """
     data_file = open('users.csv', 'w')
-    # 2024 would be Fall 2024 and Spring 2025
-    dates = generate_dates(2022, 2025)
+    dates = generate_dates(2022, get_current_academic_year())
     stats = config_stats(dates)
     csv_writer = config_csvwriter(dates, data_file)
     f = open('pilots.json')
@@ -136,9 +266,9 @@ def main(process_all, one):
     data_file.close()
 
 
-# process_all = True
-# one = None
-# if len(sys.argv) > 1:
-#     process_all = False
-#     one = sys.argv[1]
-# main(process_all, one)
+process_all = True
+one = None
+if len(sys.argv) > 1:
+    process_all = False
+    one = sys.argv[1]
+main(process_all, one)
