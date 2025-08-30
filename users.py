@@ -1,5 +1,4 @@
 import csv
-import sys
 import json
 from datetime import datetime
 import requests
@@ -29,19 +28,22 @@ def users_active_since_date(begin_d, end_d, users):
     return len(list(filter(lambda user: process(user), users)))
 
 
-def get_users(url, token):
+def get_users(url, where, token):
     all_data = []
     api_url = f'http://{url}.cloudbank.2i2c.cloud/hub/api'
     if url == "mills":
         api_url = f'http://datahub.{url}.edu/hub/api'
+    if where == "icor":
+        api_url = f'http://{url}.jupyter.cal-icor.org/hub/api'
     for offset in range(0, 600, 200):
-        r = requests.get(api_url + f'/users?limit=200&offset={offset}',
-                        headers = {
-                            'Authorization': f'token {token}'
-                        }
-                    )
+        r = requests.get(
+            api_url + f'/users?limit=200&offset={offset}',
+            headers={
+                'Authorization': f'token {token}'
+            }
+        )
         if r.status_code == 403:
-            print("403 error")
+            print(f"{url}: 403 error")
             return []
         if r.status_code != 200:
             print(r.status_code)
@@ -54,10 +56,12 @@ def get_users(url, token):
 
 def process_pilot(pilot, dates, stats):
     p = {}
-    users = get_users(pilot["url"], pilot["token"]) if pilot["token"] else None
+    print(f"Processing {pilot['name']} ({pilot['url']})")
+    users = get_users(pilot["url"], pilot["where"], pilot["token"])
     if users:
         users = list(filter(lambda user: "admin" not in user["roles"] and user['admin'] is False and "service-hub" not in user['name'] and "deployment-service" not in user['name'], users))
         p["name"] = pilot["name"]
+        p["where"] = pilot["where"]
         p["number_all_users"] = len(users)
         stats["all-users"][0] += p["number_all_users"]
         p["number_all_users_ever_active"] = filter_users(lambda user: user["last_activity"], users)
@@ -73,14 +77,19 @@ def process_pilot(pilot, dates, stats):
 def generate_dates(start_year, end_year):
     dates = []
     for year in range(start_year, end_year + 1):
+        # Summer semester
+        summer_begin = datetime(year, 6, 15, 0, 0, 0, 0)
+        summer_end = datetime(year, 8, 10, 0, 0, 0, 0)
+        dates.append((f"summer_{year}", summer_begin, summer_end))
+
         # Fall semester
-        fall_begin = datetime(year, 7, 15, 0, 0, 0, 0)
+        fall_begin = datetime(year, 8, 11, 0, 0, 0, 0)
         fall_end = datetime(year, 12, 31, 0, 0, 0, 0)
         dates.append((f"fall_{year}", fall_begin, fall_end))
 
         # Spring semester (spills into next year)
         spring_begin = datetime(year + 1, 1, 1, 0, 0, 0, 0)
-        spring_end = datetime(year + 1, 7, 14, 0, 0, 0, 0)
+        spring_end = datetime(year + 1, 6, 14, 0, 0, 0, 0)
         dates.append((f"spring_{year + 1}", spring_begin, spring_end))
     return dates
 
@@ -98,23 +107,23 @@ def config_csvwriter(dates, data_file):
     # create the csv writer object
     csv_writer = csv.writer(data_file)
 
-    header = list(["college", "all-users", "all-users-ever-active"])
+    header = list(["college", "where", "all-users", "all-users-ever-active"])
     header.extend(list(map(lambda row: row[0], dates)))
     csv_writer.writerow(header)
     return csv_writer
 
 
 def write_csvwriter_stats(csv_writer, stats):
-    row = ["Total"] + list(map(lambda c: c[0], stats.values()))
+    row = ["Total", ""] + list(map(lambda c: c[0], stats.values()))
     csv_writer.writerow(row)
-    row = ["Total Schools > 5 Users"] + list(map(lambda c: c[1], stats.values()))
+    row = ["Total Schools > 5 Users", ""] + list(map(lambda c: c[1], stats.values()))
     csv_writer.writerow(row)
 
 
 def main(process_all, one):
     data_file = open('users.csv', 'w')
     # 2024 would be Fall 2024 and Spring 2025
-    dates = generate_dates(2022, 2024)
+    dates = generate_dates(2022, 2025)
     stats = config_stats(dates)
     csv_writer = config_csvwriter(dates, data_file)
     f = open('pilots.json')
