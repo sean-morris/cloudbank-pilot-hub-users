@@ -16,7 +16,6 @@ Requires:
 
 import firebase_admin
 from firebase_admin import credentials, firestore
-import os
 import datetime
 
 
@@ -28,7 +27,6 @@ def main():
     # Use the application default credentials
     cred = credentials.ApplicationDefault()
     firebase_admin.initialize_app(cred, {
-        'projectId': os.environ.get("GCP_PROJECT_ID"),
         'storageBucket': 'data8x-scratch.appspot.com/otter-srv-stdalone'
     })
 
