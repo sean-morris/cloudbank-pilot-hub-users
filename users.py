@@ -20,6 +20,8 @@ import json
 import sys
 from datetime import datetime
 import requests
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 def filter_users(func, users):
@@ -113,14 +115,13 @@ def get_users(url, where, token):
     return all_data
 
 
-def process_pilot(pilot, dates, stats):
+def process_pilot(pilot, dates):
     """
     Processes a single pilot, collecting user statistics for each term.
 
     Args:
         pilot (dict): Pilot metadata.
         dates (list): List of (term, begin, end) tuples.
-        stats (dict): Aggregated statistics.
 
     Returns:
         dict: Statistics for the pilot.
@@ -133,14 +134,9 @@ def process_pilot(pilot, dates, stats):
         p["name"] = pilot["name"]
         p["where"] = pilot["where"]
         p["number_all_users"] = len(users)
-        stats["all-users"][0] += p["number_all_users"]
         p["number_all_users_ever_active"] = filter_users(lambda user: user["last_activity"], users)
-        stats["all-users-ever-active"][0] += p["number_all_users_ever_active"]
         for term, begin, end in dates:
             p[term] = users_active_since_date(begin, end, users)
-            stats[term][0] += p[term]
-            if p[term] > 5:
-                stats[term][1] += 1
     return p
 
 
@@ -258,17 +254,52 @@ def main(process_all, one):
     csv_writer = config_csvwriter(dates, data_file)
     f = open('pilots.json')
     data = json.load(f)
-    for pilot in data["pilots"]:
-        if process_all or pilot["url"] == one:
-            p = process_pilot(pilot, dates, stats)
-            csv_writer.writerow(p.values())
+    
+    # Filter pilots to process
+    pilots_to_process = [pilot for pilot in data["pilots"] 
+                         if process_all or pilot["url"] == one]
+    
+    # Process pilots in parallel using ThreadPoolExecutor
+    results = []
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        # Submit all pilot processing tasks
+        future_to_pilot = {executor.submit(process_pilot, pilot, dates): pilot 
+                          for pilot in pilots_to_process}
+        
+        # Collect results as they complete
+        for future in as_completed(future_to_pilot):
+            pilot = future_to_pilot[future]
+            try:
+                result = future.result()
+                if result:
+                    results.append(result)
+            except Exception as exc:
+                print(f"{pilot['name']} generated an exception: {exc}")
+    
+    # Aggregate statistics and write to CSV
+    for p in results:
+        csv_writer.writerow(p.values())
+        
+        # Update aggregate statistics
+        if "number_all_users" in p:
+            stats["all-users"][0] += p["number_all_users"]
+        if "number_all_users_ever_active" in p:
+            stats["all-users-ever-active"][0] += p["number_all_users_ever_active"]
+        
+        for term, begin, end in dates:
+            if term in p:
+                stats[term][0] += p[term]
+                if p[term] > 5:
+                    stats[term][1] += 1
+    
     write_csvwriter_stats(csv_writer, stats)
     data_file.close()
 
 
-process_all = True
-one = None
-if len(sys.argv) > 1:
-    process_all = False
-    one = sys.argv[1]
-main(process_all, one)
+if __name__ == "__main__":
+    process_all = True
+    one = None
+    if len(sys.argv) > 1:
+        process_all = False
+        one = sys.argv[1]
+    main(process_all, one)

@@ -1,4 +1,5 @@
 venv/
+.venv/
 pilots.json
 .ipynb*
 numbers.csv
