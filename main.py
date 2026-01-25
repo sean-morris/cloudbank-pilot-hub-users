@@ -24,14 +24,16 @@ Requires:
 """
 
 import threading
-import users
-import otter_standalone_use
 import subprocess
 
 # Decrypt pilot tokens
 open('pilots.json', 'w').write(
     subprocess.run(['sops', '--decrypt', 'enc-pilots.json'], capture_output=True, text=True).stdout
 )
+
+# Now import users and otter_standalone_use after pilots.json has been created
+import users
+import otter_standalone_use
 
 # Run user statistics and notebook usage aggregation in parallel
 thread1 = threading.Thread(target=users.main, args=(True, None))
