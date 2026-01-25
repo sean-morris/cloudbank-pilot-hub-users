@@ -1,0 +1,12 @@
+name: cloudbank-pilot-hub-users
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - pip
+  - pip:
+    - python-dateutil
+    - requests
+    - otter-grader
+    - firebase-admin==6.0.1
