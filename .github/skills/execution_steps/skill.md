@@ -33,7 +33,7 @@ gcloud config get-value project
 
 ### 5. Run main.py
 ```bash
-python main.py
+python3 main.py
 ```
 
 **What main.py does:**

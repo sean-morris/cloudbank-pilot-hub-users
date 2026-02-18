@@ -96,7 +96,8 @@ def get_users(url, where, token):
         api_url = f'http://datahub.{url}.edu/hub/api'
     if where == "icor":
         api_url = f'http://{url}.jupyter.cal-icor.org/hub/api'
-    for offset in range(0, 600, 200):
+    offset = 0
+    while True:
         r = requests.get(
             api_url + f'/users?limit=200&offset={offset}',
             headers={
@@ -111,7 +112,12 @@ def get_users(url, where, token):
             print(r.text)
             raise Exception("Error getting users")
         r.raise_for_status()
-        all_data.extend(r.json())
+        data = r.json()
+        all_data.extend(data)
+        # Stop if we got fewer than 200 users (indicating end of results)
+        if len(data) < 200:
+            break
+        offset += 200
     return all_data
 
 
@@ -137,6 +143,7 @@ def process_pilot(pilot, dates):
         p["number_all_users_ever_active"] = filter_users(lambda user: user["last_activity"], users)
         for term, begin, end in dates:
             p[term] = users_active_since_date(begin, end, users)
+    
     return p
 
 
@@ -275,7 +282,6 @@ def main(process_all, one):
                     results.append(result)
             except Exception as exc:
                 print(f"{pilot['name']} generated an exception: {exc}")
-    
     # Aggregate statistics and write to CSV
     for p in results:
         csv_writer.writerow(p.values())
@@ -285,13 +291,12 @@ def main(process_all, one):
             stats["all-users"][0] += p["number_all_users"]
         if "number_all_users_ever_active" in p:
             stats["all-users-ever-active"][0] += p["number_all_users_ever_active"]
-        
+
         for term, begin, end in dates:
             if term in p:
                 stats[term][0] += p[term]
                 if p[term] > 5:
                     stats[term][1] += 1
-    
     write_csvwriter_stats(csv_writer, stats)
     data_file.close()
 
