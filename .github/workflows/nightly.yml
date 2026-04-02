@@ -1,0 +1,50 @@
+name: Nightly Dashboard Update
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 6am UTC every night (10pm PT / 11pm PDT)
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Install sops
+        run: |
+          curl -Lo /usr/local/bin/sops \
+            https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
+          chmod +x /usr/local/bin/sops
+
+      - name: Set up conda environment
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment.yaml
+          activate-environment: cloudbank-pilot-hub-users
+          auto-activate-base: false
+
+      - name: Run data pipeline
+        shell: bash -el {0}
+        run: python main.py
+
+      - name: Build dashboard
+        shell: bash -el {0}
+        run: python scripts/build_dashboard.py
+
+      - name: Commit and push updates
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add users.csv otter_standalone_use.csv docs/
+          git diff --cached --quiet || git commit -m "chore: nightly dashboard update $(date -u +%Y-%m-%d)"
+          git push

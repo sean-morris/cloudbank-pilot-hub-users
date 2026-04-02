@@ -8,5 +8,6 @@ dependencies:
   - pip:
     - python-dateutil
     - requests
+    - pandas
     - otter-grader
     - firebase-admin==6.0.1

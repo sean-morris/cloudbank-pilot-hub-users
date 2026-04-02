@@ -137,6 +137,7 @@ def process_pilot(pilot, dates):
     users = get_users(pilot["url"], pilot["where"], pilot["token"])
     if users:
         users = list(filter(lambda user: "admin" not in user["roles"] and user['admin'] is False and "service-hub" not in user['name'] and "deployment-service" not in user['name'], users))
+        print(users)
         p["name"] = pilot["name"]
         p["where"] = pilot["where"]
         p["number_all_users"] = len(users)
