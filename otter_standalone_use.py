@@ -3,20 +3,11 @@ otter_standalone_use.py
 
 Collects weekly usage statistics for Otter Standalone notebooks from Firestore.
 Aggregates the number of users and notebooks per week and writes results to a CSV file.
-
-Usage:
-    python otter_standalone_use.py
-
-Outputs:
-    - otter_standalone_use.csv: Weekly usage statistics
-
-Requires:
-    - Google Cloud credentials (set via environment variable GCP_PROJECT_ID)
 """
 
+import datetime
 import firebase_admin
 from firebase_admin import credentials, firestore
-import datetime
 
 
 def main():
@@ -24,13 +15,13 @@ def main():
     Connects to Firestore, retrieves Otter Standalone usage records,
     aggregates statistics by week, and writes results to a CSV file.
     """
-    # Use the application default credentials
     cred = credentials.ApplicationDefault()
-    firebase_admin.initialize_app(cred, {
+    app = firebase_admin.initialize_app(cred, {
+        'projectId': 'data8x-scratch',
         'storageBucket': 'data8x-scratch.appspot.com/otter-srv-stdalone'
     })
 
-    db = firestore.client()
+    db = firestore.client(app=app)
     docs = db.collection("otter-stdalone-prod-count").stream()
     total_notebooks = 0
     weeks_dict = {}
@@ -49,6 +40,7 @@ def main():
             weeks_dict[key][0] += 1
             weeks_dict[key][1] += num_notebooks
         total_notebooks += num_notebooks
+
     s_dict = dict(reversed(sorted(weeks_dict.items())))
     with open("otter_standalone_use.csv", "w") as f:
         f.write(f"Total: {total_notebooks}\n")

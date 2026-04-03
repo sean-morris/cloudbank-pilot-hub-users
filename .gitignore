@@ -10,6 +10,6 @@ numbers.csv
 .DS_Store
 users.py
 __pycache__
-otter_standalone_use.csv
-users.csv
 .conda
+.secrets
+.secrets.tmp
