@@ -1,10 +1,48 @@
 import json
 import pandas as pd
 from pathlib import Path
-from datetime import date
+from datetime import date, timedelta
 
 BASE_DIR = Path(__file__).parent.parent
 DOCS_DIR = BASE_DIR / "docs"
+
+
+def resolve_week_start(year_month, week_number):
+    year, month = map(int, str(year_month).split("-"))
+    month_anchor = date(year, month, 1)
+    candidates = []
+
+    for iso_year in (year - 1, year, year + 1):
+        try:
+            week_start = date.fromisocalendar(iso_year, int(week_number), 1)
+        except ValueError:
+            continue
+
+        week_end = week_start + timedelta(days=6)
+        score = 0
+        if week_start.year == year and week_start.month == month:
+            score += 2
+        if week_end.year == year and week_end.month == month:
+            score += 2
+        if week_start.year == year or week_end.year == year:
+            score += 1
+
+        distance = min(
+            abs((week_start - month_anchor).days),
+            abs((week_end - month_anchor).days),
+        )
+        candidates.append((score, -distance, week_start.toordinal(), week_start))
+
+    if not candidates:
+        raise ValueError(f"Unable to resolve week {week_number} for {year_month}")
+
+    return max(candidates)[-1]
+
+
+def format_semester_label(semester):
+    season, year = semester.split("_", 1)
+    return f"{season.title()} {year}"
+
 
 # -- Load users.csv --
 users_df = pd.read_csv(BASE_DIR / "users.csv")
@@ -17,20 +55,28 @@ fixed_cols = ["college", "where", "all-users", "all-users-ever-active"]
 semester_cols = [c for c in users_df.columns if c not in fixed_cols]
 
 cloudbank_df = users_df[users_df["where"] == "cloudbank"]
-icor_df      = users_df[users_df["where"] == "icor"]
+icor_df = users_df[users_df["where"] == "icor"]
 
-semester_data = [
+semester_data = []
+for col in semester_cols:
+  semester_data.append(
     {
-        "semester": col,
-        "cloudbank": int(cloudbank_df[col].sum()),
-        "icor":      int(icor_df[col].sum()),
+      "semester": col,
+      "cloudbank": int(cloudbank_df[col].sum()),
+      "icor": int(icor_df[col].sum()),
     }
-    for col in semester_cols
-]
+  )
 
 # Current + 3 previous semesters for the table
 recent_sems = semester_cols[-4:]
 current_sem = recent_sems[-1]
+current_sem_label = format_semester_label(current_sem)
+
+institution_threshold = 5
+current_institution_counts = {
+    "cloudbank": int((cloudbank_df[current_sem] > institution_threshold).sum()),
+    "icor": int((icor_df[current_sem] > institution_threshold).sum()),
+}
 
 institutions = (
     users_df[["college", "where", "all-users", "all-users-ever-active"] + recent_sems]
@@ -42,19 +88,55 @@ institutions = (
 otter_df = pd.read_csv(BASE_DIR / "otter_standalone_use.csv", skiprows=1, skipinitialspace=True)
 otter_df.columns = [c.strip() for c in otter_df.columns]
 
-monthly_otter = (
-    otter_df.groupby("Year-Month", sort=True)
-    .agg({"Number of Users": "sum", "Number of Notebooks": "sum"})
-    .reset_index()
-    .to_dict(orient="records")
+otter_df["week_start"] = pd.to_datetime(
+    otter_df.apply(lambda row: resolve_week_start(row["Year-Month"], row["Week Of Year"]), axis=1)
 )
 
+weekly_otter_df = (
+    otter_df.groupby("week_start", sort=True)
+    .agg({"Number of Users": "sum", "Number of Notebooks": "sum"})
+    .reset_index()
+)
+
+latest_week = weekly_otter_df.iloc[-1]
+latest_week_label = latest_week["week_start"].strftime("%b %-d, %Y")
+
+otter_cutoff = weekly_otter_df["week_start"].max() - pd.DateOffset(months=12)
+weekly_otter = weekly_otter_df[weekly_otter_df["week_start"] >= otter_cutoff].copy()
+weekly_otter["label"] = weekly_otter["week_start"].dt.strftime("%Y-%m-%d")
+weekly_otter["week_start"] = weekly_otter["week_start"].dt.strftime("%Y-%m-%d")
+weekly_otter = weekly_otter.to_dict(orient="records")
+
+summary_cards = [
+    {
+        "label": f"CloudBank Institutions > {institution_threshold}",
+        "value": current_institution_counts["cloudbank"],
+        "detail": current_sem_label,
+    },
+    {
+        "label": f"ICOR Institutions > {institution_threshold}",
+        "value": current_institution_counts["icor"],
+        "detail": current_sem_label,
+    },
+    {
+        "label": "Notebooks Graded This Week",
+        "value": int(latest_week["Number of Notebooks"]),
+        "detail": latest_week_label,
+    },
+    {
+        "label": "Submissions This Week",
+        "value": int(latest_week["Number of Users"]),
+        "detail": latest_week_label,
+    },
+]
+
 # -- Build HTML --
-updated          = date.today().isoformat()
-semester_json     = json.dumps(semester_data)
+updated = date.today().isoformat()
+semester_json = json.dumps(semester_data)
 institutions_json = json.dumps(institutions)
-otter_json        = json.dumps(monthly_otter)
-recent_sems_json  = json.dumps(recent_sems)
+otter_json = json.dumps(weekly_otter)
+recent_sems_json = json.dumps(recent_sems)
+summary_json = json.dumps(summary_cards)
 
 html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -71,6 +153,11 @@ html = f"""<!DOCTYPE html>
     .card {{ background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }}
     h2 {{ font-size: 1.1rem; margin-bottom: 1rem; }}
     canvas {{ max-height: 320px; }}
+    .summary-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem; }}
+    .summary-card {{ background: #fff; border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }}
+    .summary-label {{ color: #666; font-size: 0.85rem; margin-bottom: 0.5rem; }}
+    .summary-value {{ font-size: 1.8rem; font-weight: 700; line-height: 1.1; }}
+    .summary-detail {{ color: #888; font-size: 0.8rem; margin-top: 0.35rem; }}
     input {{ width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem; margin-bottom: 1rem; }}
     table {{ width: 100%; border-collapse: collapse; font-size: 0.85rem; }}
     th {{ text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid #eee; color: #555; }}
@@ -85,13 +172,15 @@ html = f"""<!DOCTYPE html>
   <h1>CloudBank Pilot Hub Users</h1>
   <p class="updated">Last updated: {updated}</p>
 
+  <div class="summary-grid" id="summary-grid"></div>
+
   <div class="card">
     <h2>Active Users by Semester</h2>
     <canvas id="semesterChart"></canvas>
   </div>
 
   <div class="card">
-    <h2>Otter Standalone Monthly Usage</h2>
+    <h2>Otter Standalone Weekly Usage</h2>
     <canvas id="otterChart"></canvas>
   </div>
 
@@ -119,6 +208,17 @@ html = f"""<!DOCTYPE html>
     const institutions = {institutions_json};
     const otter        = {otter_json};
     const recentSems   = {recent_sems_json};
+    const summaries    = {summary_json};
+
+    // --- Summary cards ---
+    const summaryGrid = document.getElementById("summary-grid");
+    summaryGrid.innerHTML = summaries.map(item => `
+      <div class="summary-card">
+        <div class="summary-label">${{item.label}}</div>
+        <div class="summary-value">${{Number(item.value).toLocaleString()}}</div>
+        <div class="summary-detail">${{item.detail}}</div>
+      </div>
+    `).join("");
 
     // --- Semester chart ---
     new Chart(document.getElementById("semesterChart"), {{
@@ -141,10 +241,10 @@ html = f"""<!DOCTYPE html>
     new Chart(document.getElementById("otterChart"), {{
       type: "line",
       data: {{
-        labels: otter.map(r => r["Year-Month"]),
+        labels: otter.map(r => r.label),
         datasets: [
           {{
-            label: "Users",
+            label: "Submissions",
             data: otter.map(r => r["Number of Users"]),
             borderColor: "#4e79a7",
             backgroundColor: "rgba(78,121,167,0.1)",
@@ -164,7 +264,10 @@ html = f"""<!DOCTYPE html>
       options: {{
         responsive: true,
         plugins: {{ legend: {{ position: "top" }} }},
-        scales: {{ y: {{ beginAtZero: true, ticks: {{ precision: 0 }} }} }}
+        scales: {{
+          x: {{ ticks: {{ maxTicksLimit: 12 }} }},
+          y: {{ beginAtZero: true, ticks: {{ precision: 0 }} }}
+        }}
       }}
     }});
 
