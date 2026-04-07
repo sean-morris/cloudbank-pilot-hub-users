@@ -19,8 +19,8 @@ import csv
 import json
 import sys
 from datetime import datetime
+
 import requests
-import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
@@ -105,12 +105,9 @@ def get_users(url, where, token):
             }
         )
         if r.status_code == 403:
-            print(f"{url}: 403 error")
-            return []
+            raise Exception(f"403 error getting users from {url}")
         if r.status_code != 200:
-            print(r.status_code)
-            print(r.text)
-            raise Exception("Error getting users")
+            raise Exception(f"Error getting users from {url}: {r.status_code} {r.text}")
         r.raise_for_status()
         data = r.json()
         all_data.extend(data)
@@ -132,19 +129,17 @@ def process_pilot(pilot, dates):
     Returns:
         dict: Statistics for the pilot.
     """
-    p = {}
-    print(f"Processing {pilot['name']} ({pilot['url']})")
     users = get_users(pilot["url"], pilot["where"], pilot["token"])
-    if users:
-        users = list(filter(lambda user: "admin" not in user["roles"] and user['admin'] is False and "service-hub" not in user['name'] and "deployment-service" not in user['name'], users))
-        print(users)
-        p["name"] = pilot["name"]
-        p["where"] = pilot["where"]
-        p["number_all_users"] = len(users)
-        p["number_all_users_ever_active"] = filter_users(lambda user: user["last_activity"], users)
-        for term, begin, end in dates:
-            p[term] = users_active_since_date(begin, end, users)
-    
+    users = list(filter(lambda user: "admin" not in user["roles"] and user['admin'] is False and "service-hub" not in user['name'] and "deployment-service" not in user['name'], users))
+    p = {
+        "name": pilot["name"],
+        "where": pilot["where"],
+        "number_all_users": len(users),
+        "number_all_users_ever_active": filter_users(lambda user: user["last_activity"], users),
+    }
+    for term, begin, end in dates:
+        p[term] = users_active_since_date(begin, end, users)
+
     return p
 
 
@@ -231,9 +226,9 @@ def write_csvwriter_stats(csv_writer, stats):
 
 def get_current_academic_year():
     """
-    Gets the first year of the current academmic year: 
+    Gets the first year of the current academmic year:
     Current Academic year: 2025-26 ==> 2025
-    
+
     Returns:
         integer: beginning year of current academic year
     """
@@ -262,31 +257,33 @@ def main(process_all, one):
     csv_writer = config_csvwriter(dates, data_file)
     f = open('pilots.json')
     data = json.load(f)
-    
+
     # Filter pilots to process
-    pilots_to_process = [pilot for pilot in data["pilots"] 
+    pilots_to_process = [pilot for pilot in data["pilots"]
                          if process_all or pilot["url"] == one]
-    
+
     # Process pilots in parallel using ThreadPoolExecutor
     results = []
+    failures = []
     with ThreadPoolExecutor(max_workers=10) as executor:
         # Submit all pilot processing tasks
-        future_to_pilot = {executor.submit(process_pilot, pilot, dates): pilot 
-                          for pilot in pilots_to_process}
-        
+        future_to_pilot = {
+            executor.submit(process_pilot, pilot, dates): pilot
+            for pilot in pilots_to_process
+        }
+
         # Collect results as they complete
         for future in as_completed(future_to_pilot):
             pilot = future_to_pilot[future]
             try:
                 result = future.result()
-                if result:
-                    results.append(result)
+                results.append(result)
             except Exception as exc:
-                print(f"{pilot['name']} generated an exception: {exc}")
+                failures.append(f"{pilot['name']}: {exc}")
     # Aggregate statistics and write to CSV
     for p in results:
         csv_writer.writerow(p.values())
-        
+
         # Update aggregate statistics
         if "number_all_users" in p:
             stats["all-users"][0] += p["number_all_users"]
@@ -301,6 +298,13 @@ def main(process_all, one):
     write_csvwriter_stats(csv_writer, stats)
     data_file.close()
 
+    return {
+        "total_pilots": len(pilots_to_process),
+        "successful_pilots": len(results),
+        "failed_pilots": len(failures),
+        "failures": failures,
+    }
+
 
 if __name__ == "__main__":
     process_all = True
@@ -308,4 +312,15 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         process_all = False
         one = sys.argv[1]
-    main(process_all, one)
+    try:
+        summary = main(process_all, one)
+        status = "Finished with failure" if summary["failed_pilots"] else "Finished successfully"
+        print(
+            f"{status}: users successful={summary['successful_pilots']} "
+            f"failed={summary['failed_pilots']} total={summary['total_pilots']}"
+        )
+        if summary["failed_pilots"]:
+            sys.exit(1)
+    except Exception as exc:
+        print(f"Finished with failure: {exc}")
+        sys.exit(1)
