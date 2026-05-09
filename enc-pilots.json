@@ -409,12 +409,6 @@
 			"token": "ENC[AES256_GCM,data:yA7fnkO68ApE5qc/Jsw4HOwMAgJSdquynAwrXjvcjvQ=,iv:mdxIQKQJnHCp5rtLC6B4+GmHjHYl56CThmmExR2UMFc=,tag:Q/T11tWudduDufsyt/ZJ/g==,type:str]"
 		},
 		{
-			"url": "uchicago",
-			"where": "cloudbank",
-			"name": "University of Chicago",
-			"token": "ENC[AES256_GCM,data:qs7I4LHGWRnlKVa76XtsIMAMQ9V5qKrgrWKjAfpFXb4=,iv:OO/p4KF0XzX7jdzu2fBsvTvc6nCsV20Dt+0XMvc5vCY=,tag:kzhw7JBFW++b2Cef3WzONA==,type:str]"
-		},
-		{
 			"url": "ucsc",
 			"where": "icor",
 			"name": "University of California, Santa Cruz",
