@@ -406,7 +406,7 @@
 			"url": "tuskegee",
 			"where": "cloudbank",
 			"name": "Tuskegee University",
-			"token": "ENC[AES256_GCM,data:yA7fnkO68ApE5qc/Jsw4HOwMAgJSdquynAwrXjvcjvQ=,iv:mdxIQKQJnHCp5rtLC6B4+GmHjHYl56CThmmExR2UMFc=,tag:Q/T11tWudduDufsyt/ZJ/g==,type:str]"
+			"token": "ENC[AES256_GCM,data:K3zlgGLTSD1/a0iBmuAlNPb98wJVJ+uhudXNo1h01M4=,iv:VAHi48wCjLbLU1ijVP57rLWz7Jjy6FwJslHx67frUBk=,tag:YNzgA/dGcNyORolrMqDr+w==,type:str]"
 		},
 		{
 			"url": "ucsc",
