@@ -143,7 +143,7 @@ html = f"""<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CloudBank Pilot Hub Users</title>
+  <title>Cal-ICOR and CloudBank Pilot Hub Users</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -169,7 +169,7 @@ html = f"""<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <h1>CloudBank Pilot Hub Users</h1>
+  <h1>Cal-ICOR and CloudBank Pilot Hub Users</h1>
   <p class="updated">Last updated: {updated}</p>
 
   <div class="summary-grid" id="summary-grid"></div>
