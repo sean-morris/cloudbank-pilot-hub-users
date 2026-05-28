@@ -1,4 +1,4 @@
-# CloudBank Pilot Hub Users
+# Cal-ICOR and CloudBank Pilot Hub Users
 
 This repository collects and analyzes user activity data from multiple JupyterHub deployments for various colleges and universities as well as reports the number of users that have used otter-service-standalone by week.
 
