@@ -48,3 +48,10 @@ jobs:
           git add users.csv otter_standalone_use.csv docs/
           git diff --cached --quiet || git commit -m "chore: nightly dashboard update $(date -u +%Y-%m-%d)"
           git push
+
+      - name: Notify Slack on failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{\"text\":\":x: *Nightly Dashboard Update failed*\nRun: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"
