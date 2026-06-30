@@ -148,7 +148,7 @@
 			"url": "elac",
 			"where": "cloudbank",
 			"name": "East LA College",
-			"token": "ENC[AES256_GCM,data:mq9EeHY1hRRou+0+1iSNQwOV1IAfcMjCvvIW7YGBG2c=,iv:LrptbVf3l32FifBlMY+wxOGUWOiVgg81zbzZDJta48s=,tag:dikhLShBBa7oPr/QddfY2g==,type:str]"
+			"token": "ENC[AES256_GCM,data:xVDjthxfL/qLOOMImfGXEHKZo66bfYugGlxiyL0j+lM=,iv:Vyqt0AC51x6qAVHK7jFys13OTbziI54POXL/Wf6zwVY=,tag:OtSMt1RwrCxeGYAZEcxjcg==,type:str]"
 		},
 		{
 			"url": "elcamino",
@@ -196,7 +196,7 @@
 			"url": "golden",
 			"where": "cloudbank",
 			"name": "Golden West College",
-			"token": "ENC[AES256_GCM,data:+J245K6oyTbSuZt/Z9wH0mi13/NkoYsV2DjRGRD2Ue0=,iv:eZI6163yOhFTd6VSSPm1iMxBnMgxmXAXObJWYRyoHf0=,tag:15BaqcF6nZgOmn67uiDlZw==,type:str]"
+			"token": "ENC[AES256_GCM,data:VN0buNW6JyuTmjb7XFgom0g2wuNTkDwa7uB2kmgxjCg=,iv:7y/EbLt4rQRIvMobbIgSy5780lRCbcqjjBe1B9uR3r0=,tag:sLLrf7vrLDYyi2nzDvSJaA==,type:str]"
 		},
 		{
 			"url": "gwu",
@@ -457,8 +457,8 @@
 		"azure_kv": null,
 		"hc_vault": null,
 		"age": null,
-		"lastmodified": "2026-05-09T22:52:39Z",
-		"mac": "ENC[AES256_GCM,data:hssmREcsnK3rxYjoo3zpJonlyoiTx5CK9dEm16r2+PkKVe1XIWeIMlfKUvLq6jsLlAzfkSmQCeXFRQVitOy8rGuyXxQ25pQeTMMgtp724L5KaU6WD5gFIODqNpUGt/tskc53MVy+totHLKlmmfEbj/eEmJZW4aRyy0p5GK0b4Xo=,iv:IpTARoz53O+SjJ7PFgooc+woD1zWl9Nr4fUacM9HgV8=,tag:+UzIKF85HqkAD0TQj6LvBg==,type:str]",
+		"lastmodified": "2026-06-30T23:51:39Z",
+		"mac": "ENC[AES256_GCM,data:1t7IgbLg6hQWX6BwrDadWQzWo38rQdob+Ey0kBqbVgeS4oMcnO8H2NxWLzkKHnPKedUtu9JoRCtVhllurTPahpNiGRsnOdAPKRDxRMqcVSxQSmlVPl/OuFG8W1G7k7+Ut7h/oj93lhyviOn4hw1vQTthXv+EtbMI4PMcOndup9E=,iv:mNvcMlQiM5DYwg+b4hACAUYlbxL3Au9O4IVLvz4UT60=,tag:DEJUUWJvvPwEfmxatnFr2w==,type:str]",
 		"pgp": null,
 		"encrypted_regex": "^(token)$",
 		"version": "3.8.1"
