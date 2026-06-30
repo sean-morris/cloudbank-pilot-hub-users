@@ -132,11 +132,27 @@ summary_cards = [
 
 # -- Build HTML --
 updated = date.today().isoformat()
+recent_sem_labels = {s: format_semester_label(s) for s in recent_sems}
 semester_json = json.dumps(semester_data)
 institutions_json = json.dumps(institutions)
 otter_json = json.dumps(weekly_otter)
 recent_sems_json = json.dumps(recent_sems)
+recent_sem_labels_json = json.dumps(recent_sem_labels)
+current_sem_json = json.dumps(current_sem)
+
+# Default the table sort to the most recent term that actually has data, so
+# the dashboard doesn't open sorted by an all-zero future term (e.g. spring_2027).
+default_sort_sem = next(
+    (s for s in reversed(recent_sems) if int(users_df[s].sum()) > 0),
+    current_sem,
+)
+default_sort_json = json.dumps(default_sort_sem)
 summary_json = json.dumps(summary_cards)
+
+# Pre-render the semester <option>s for the term filter
+sem_options_html = "".join(
+    f'<option value="{s}">{recent_sem_labels[s]}</option>' for s in recent_sems
+)
 
 html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -158,14 +174,28 @@ html = f"""<!DOCTYPE html>
     .summary-label {{ color: #666; font-size: 0.85rem; margin-bottom: 0.5rem; }}
     .summary-value {{ font-size: 1.8rem; font-weight: 700; line-height: 1.1; }}
     .summary-detail {{ color: #888; font-size: 0.8rem; margin-top: 0.35rem; }}
+    .table-header {{ display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }}
+    .table-header h2 {{ margin-bottom: 0; }}
+    .controls {{ display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }}
+    .segmented {{ display: inline-flex; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fff; }}
+    .segmented button {{ border: 0; background: transparent; padding: 0.4rem 0.85rem; font-size: 0.85rem; color: #555; cursor: pointer; border-left: 1px solid #eee; }}
+    .segmented button:first-child {{ border-left: 0; }}
+    .segmented button:hover {{ background: #f5f5f5; }}
+    .segmented button.active {{ background: #4e79a7; color: #fff; }}
+    select {{ padding: 0.4rem 0.6rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.85rem; background: #fff; color: #333; cursor: pointer; }}
     input {{ width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.9rem; margin-bottom: 1rem; }}
     table {{ width: 100%; border-collapse: collapse; font-size: 0.85rem; }}
-    th {{ text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid #eee; color: #555; }}
+    th {{ text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid #eee; color: #555; cursor: pointer; user-select: none; white-space: nowrap; }}
+    th:hover {{ color: #4e79a7; }}
+    th.num, td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+    th .arrow {{ color: #4e79a7; font-size: 0.75rem; margin-left: 0.25rem; }}
     td {{ padding: 0.45rem 0.75rem; border-bottom: 1px solid #f0f0f0; }}
     tr:hover td {{ background: #fafafa; }}
-    .cloudbank {{ color: #4e79a7; font-weight: 500; }}
-    .icor {{ color: #f28e2b; font-weight: 500; }}
+    .badge {{ display: inline-block; padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }}
+    .badge.cloudbank {{ background: rgba(78,121,167,0.15); color: #3a5e85; }}
+    .badge.icor {{ background: rgba(242,142,43,0.18); color: #b3641a; }}
     .zero {{ color: #bbb; }}
+    .empty {{ color: #888; font-size: 0.9rem; padding: 1rem 0.25rem; }}
   </style>
 </head>
 <body>
@@ -185,30 +215,37 @@ html = f"""<!DOCTYPE html>
   </div>
 
   <div class="card">
-    <h2>Institutions &mdash; {current_sem}</h2>
+    <div class="table-header">
+      <h2>Institutions</h2>
+      <div class="controls">
+        <div class="segmented" id="program-filter">
+          <button data-program="all" class="active">All</button>
+          <button data-program="cloudbank">CloudBank</button>
+          <button data-program="icor">ICOR</button>
+        </div>
+        <select id="semester-filter">
+          <option value="all">All recent semesters</option>
+          {sem_options_html}
+        </select>
+      </div>
+    </div>
     <input type="text" id="search" placeholder="Search by institution..." />
-    <table>
-      <thead>
-        <tr>
-          <th>Institution</th>
-          <th>Program</th>
-          <th>All Users</th>
-          <th>{recent_sems[0]}</th>
-          <th>{recent_sems[1]}</th>
-          <th>{recent_sems[2]}</th>
-          <th>{recent_sems[3]}</th>
-        </tr>
-      </thead>
+    <table id="inst-table">
+      <thead id="table-head"></thead>
       <tbody id="table-body"></tbody>
     </table>
+    <p class="empty" id="empty-msg" hidden>No institutions match the current filters.</p>
   </div>
 
   <script>
-    const semesters    = {semester_json};
-    const institutions = {institutions_json};
-    const otter        = {otter_json};
-    const recentSems   = {recent_sems_json};
-    const summaries    = {summary_json};
+    const semesters       = {semester_json};
+    const institutions    = {institutions_json};
+    const otter           = {otter_json};
+    const recentSems      = {recent_sems_json};
+    const recentSemLabels = {recent_sem_labels_json};
+    const currentSem      = {current_sem_json};
+    const defaultSort     = {default_sort_json};
+    const summaries       = {summary_json};
 
     // --- Summary cards ---
     const summaryGrid = document.getElementById("summary-grid");
@@ -271,25 +308,106 @@ html = f"""<!DOCTYPE html>
       }}
     }});
 
-    // --- Institution table ---
+    // --- Institution table (sortable + filterable) ---
+    const thead = document.getElementById("table-head");
     const tbody = document.getElementById("table-body");
+    const emptyMsg = document.getElementById("empty-msg");
 
-    function renderTable(rows) {{
-      tbody.innerHTML = rows.map(r => `
-        <tr>
-          <td>${{r.college}}</td>
-          <td><span class="${{r.where}}">${{r.where}}</span></td>
-          <td>${{Number(r["all-users"]).toLocaleString()}}</td>
-          ${{recentSems.map(s => `<td class="${{r[s] === 0 ? "zero" : ""}}">${{r[s]}}</td>`).join("")}}
-        </tr>`).join("");
+    const programLabels = {{ cloudbank: "CloudBank", icor: "ICOR" }};
+    const state = {{ program: "all", semester: "all", search: "", sortKey: defaultSort, sortDir: "desc" }};
+
+    function visibleColumns() {{
+      const cols = [
+        {{ key: "college",   label: "Institution", type: "str" }},
+        {{ key: "where",     label: "Program",     type: "str" }},
+        {{ key: "all-users", label: "All Users",   type: "num" }},
+      ];
+      const sems = state.semester === "all" ? recentSems : [state.semester];
+      sems.forEach(s => cols.push({{ key: s, label: recentSemLabels[s], type: "num" }}));
+      return cols;
     }}
 
-    renderTable(institutions);
+    function applyFilters() {{
+      const q = state.search.toLowerCase();
+      return institutions.filter(r =>
+        (state.program === "all" || r.where === state.program) &&
+        r.college.toLowerCase().includes(q)
+      );
+    }}
+
+    function sortRows(rows) {{
+      const {{ sortKey, sortDir }} = state;
+      const dir = sortDir === "asc" ? 1 : -1;
+      return rows.slice().sort((a, b) => {{
+        let va = a[sortKey], vb = b[sortKey];
+        if (typeof va === "number" || typeof vb === "number") {{
+          return ((va || 0) - (vb || 0)) * dir;
+        }}
+        return String(va).localeCompare(String(vb)) * dir;
+      }});
+    }}
+
+    function render() {{
+      const cols = visibleColumns();
+
+      thead.innerHTML = "<tr>" + cols.map(c => {{
+        const arrow = c.key === state.sortKey
+          ? `<span class="arrow">${{state.sortDir === "asc" ? "\\u25B2" : "\\u25BC"}}</span>` : "";
+        return `<th data-key="${{c.key}}" class="${{c.type === "num" ? "num" : ""}}">${{c.label}}${{arrow}}</th>`;
+      }}).join("") + "</tr>";
+
+      thead.querySelectorAll("th").forEach(th => {{
+        th.addEventListener("click", () => {{
+          const key = th.dataset.key;
+          if (state.sortKey === key) {{
+            state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+          }} else {{
+            state.sortKey = key;
+            state.sortDir = key === "college" || key === "where" ? "asc" : "desc";
+          }}
+          render();
+        }});
+      }});
+
+      const rows = sortRows(applyFilters());
+      emptyMsg.hidden = rows.length > 0;
+
+      tbody.innerHTML = rows.map(r => "<tr>" + cols.map(c => {{
+        if (c.key === "college") return `<td>${{r.college}}</td>`;
+        if (c.key === "where") {{
+          return `<td><span class="badge ${{r.where}}">${{programLabels[r.where] || r.where}}</span></td>`;
+        }}
+        const val = r[c.key];
+        const cls = "num" + (val === 0 ? " zero" : "");
+        return `<td class="${{cls}}">${{Number(val).toLocaleString()}}</td>`;
+      }}).join("") + "</tr>").join("");
+    }}
+
+    document.getElementById("program-filter").addEventListener("click", e => {{
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      state.program = btn.dataset.program;
+      document.querySelectorAll("#program-filter button")
+        .forEach(b => b.classList.toggle("active", b === btn));
+      render();
+    }});
+
+    document.getElementById("semester-filter").addEventListener("change", e => {{
+      state.semester = e.target.value;
+      // If the active sort column was hidden, fall back to the latest visible term
+      if (state.semester !== "all" && recentSems.includes(state.sortKey) && state.sortKey !== state.semester) {{
+        state.sortKey = state.semester;
+        state.sortDir = "desc";
+      }}
+      render();
+    }});
 
     document.getElementById("search").addEventListener("input", e => {{
-      const q = e.target.value.toLowerCase();
-      renderTable(institutions.filter(r => r.college.toLowerCase().includes(q)));
+      state.search = e.target.value;
+      render();
     }});
+
+    render();
   </script>
 </body>
 </html>

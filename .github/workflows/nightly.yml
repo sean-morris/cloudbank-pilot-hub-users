@@ -34,14 +34,22 @@ jobs:
           auto-activate-base: false
 
       - name: Run data pipeline
+        id: pipeline
         shell: bash -el {0}
         run: python main.py
 
+      # Always rebuild + commit, even if a few hubs failed (e.g. 403s).
+      # The pipeline still writes users.csv / otter_standalone_use.csv with
+      # the data it could fetch, so the dashboard should not freeze just
+      # because one or two hub tokens expired. The job still goes red and
+      # Slack still fires below, so the failures stay visible.
       - name: Build dashboard
+        if: always()
         shell: bash -el {0}
         run: python scripts/build_dashboard.py
 
       - name: Commit and push updates
+        if: always()
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
