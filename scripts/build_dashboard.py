@@ -69,13 +69,34 @@ for col in semester_cols:
 
 # Current + 3 previous semesters for the table
 recent_sems = semester_cols[-4:]
-current_sem = recent_sems[-1]
+
+# Table sort/label key: the most recent term that actually has data, so we never key
+# off an all-zero future term (e.g. spring_2027, which generate_dates emits ahead of time).
+current_sem = next(
+    (s for s in reversed(semester_cols) if int(users_df[s].sum()) > 0),
+    recent_sems[-1],
+)
 current_sem_label = format_semester_label(current_sem)
 
+# Current academic year terms (Fall Y / Spring Y+1 / Summer Y+1). Fall starts in August;
+# Jan–Jul belongs to the AY that began the previous Fall (summer is the tail of its AY).
+_today = date.today()
+_ay_start = _today.year if _today.month >= 8 else _today.year - 1
+ay_terms = [t for t in (f"fall_{_ay_start}", f"spring_{_ay_start + 1}", f"summer_{_ay_start + 1}")
+            if t in semester_cols]
+ay_label = f"AY {_ay_start}–{str(_ay_start + 1)[2:]}"
+
 institution_threshold = 5
+
+def _ay_institution_count(df):
+    """Institutions with >5 users in ANY term of the current academic year."""
+    if not ay_terms:
+        return 0
+    return int((df[ay_terms].max(axis=1) > institution_threshold).sum())
+
 current_institution_counts = {
-    "cloudbank": int((cloudbank_df[current_sem] > institution_threshold).sum()),
-    "icor": int((icor_df[current_sem] > institution_threshold).sum()),
+    "cloudbank": _ay_institution_count(cloudbank_df),
+    "icor": _ay_institution_count(icor_df),
 }
 
 institutions = (
@@ -111,12 +132,12 @@ summary_cards = [
     {
         "label": f"CloudBank Institutions > {institution_threshold}",
         "value": current_institution_counts["cloudbank"],
-        "detail": current_sem_label,
+        "detail": ay_label,
     },
     {
         "label": f"ICOR Institutions > {institution_threshold}",
         "value": current_institution_counts["icor"],
-        "detail": current_sem_label,
+        "detail": ay_label,
     },
     {
         "label": "Notebooks Graded This Week",
