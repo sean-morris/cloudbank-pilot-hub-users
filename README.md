@@ -78,6 +78,34 @@ python3 user.py [hub_name]  ==> e.g. python3 users.py ccsf
 - `users.csv`: User statistics per pilot and term.
 - `otter_standalone_use.csv`: Notebook usage statistics.
 
+## Cal-ICOR (icor) Hub Tokens
+
+Pilots with `"where": "icor"` in `pilots.json` / `enc-pilots.json` are
+Cal-ICOR hubs deployed from the [`cal-icor-hubs`](https://github.com/cal-icor/cal-icor-hubs)
+repo, queried at `http://<url>.jupyter.cal-icor.org/hub/api` (as opposed to
+`"where": "cloudbank"` pilots, queried at `<url>.cloudbank.2i2c.cloud`). See
+[`get_users`](users.py) for the URL logic.
+
+Each icor pilot's `token` is a read-only JupyterHub service token for the
+`cloudbank-pilot-hub-users` service account, scoped to `list:users` and
+`read:users`. That token is generated and encrypted in `cal-icor-hubs`, at
+`deployments/<url>/secrets/prod.yaml` (`jupyterhub.hub.services.cloudbank-pilot-hub-users.apiToken`),
+and the corresponding role is defined in `deployments/<url>/config/prod.yaml`.
+See the [Service Accounts: cloudbank-pilot-hub-users](https://github.com/cal-icor/cal-icor-hubs#service-accounts-cloudbank-pilot-hub-users)
+section of that repo's README for how the token is generated and rotated.
+
+**The token here must always match the token in `cal-icor-hubs`.** Whenever a
+hub's token is rotated there, the same value must be updated here too, or
+this repo will get a `403` fetching users for that hub. To update a token:
+
+```sh
+sops -d enc-pilots.json > pilots.json
+# edit pilots.json, updating the `token` field of the pilot entry matching
+# the rotated hub's `url`
+sops --encrypt --output enc-pilots.json pilots.json
+rm pilots.json
+```
+
 ## Notes
 
 - Do not commit `pilots.json`, `users.csv`, or `otter_standalone_use.csv` (see `.gitignore`).
