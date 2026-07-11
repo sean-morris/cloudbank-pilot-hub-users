@@ -1,91 +1,91 @@
 college,where,all-users,all-users-ever-active,summer_2022,fall_2022,spring_2023,summer_2023,fall_2023,spring_2024,summer_2024,fall_2024,spring_2025,summer_2025,fall_2025,spring_2026,summer_2026,fall_2026,spring_2027
-"Borough of Manhattan Community College, CUNY",cloudbank,33,33,0,0,0,0,0,0,0,0,0,0,0,33,0,0,0
 Chicago State University,cloudbank,4,4,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0
+"Borough of Manhattan Community College, CUNY",cloudbank,33,33,0,0,0,0,0,0,0,0,0,0,0,33,0,0,0
+Boise State University,cloudbank,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+Berkeley CC,cloudbank,67,67,0,0,0,0,0,0,0,0,0,0,25,42,0,0,0
 Chabot CC,cloudbank,10,10,0,0,0,0,0,0,0,0,0,0,9,1,0,0,0
 Chaffey College,cloudbank,135,135,0,0,0,0,0,0,0,0,0,19,70,45,1,0,0
-Berkeley CC,cloudbank,67,67,0,0,0,0,0,0,0,0,0,0,25,42,0,0,0
-Boise State University,cloudbank,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
 Albany High School,cloudbank,107,107,0,0,0,0,0,0,0,0,0,0,0,107,0,0,0
-Cloud County Community College,cloudbank,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
 Clark University,cloudbank,3,3,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0
+Cloud County Community College,cloudbank,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
 Carnegie Mellon University,cloudbank,9,9,0,0,0,0,0,0,0,0,0,0,0,9,0,0,0
 CSU Chico,icor,71,71,0,0,0,0,0,0,0,0,0,0,2,69,0,0,0
-CSU Bakersfield,icor,64,64,0,0,0,0,0,0,0,0,0,0,30,34,0,0,0
 CSU Fresno,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 CSU East Bay,icor,154,153,0,0,0,0,0,0,0,0,0,2,45,103,3,0,0
-CSU Fullerton,icor,171,171,0,0,0,0,0,0,0,0,0,66,99,5,1,0,0
+CSU Bakersfield,icor,64,64,0,0,0,0,0,0,0,0,0,0,30,34,0,0,0
 CSU Los Angeles,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU Fullerton,icor,171,171,0,0,0,0,0,0,0,0,0,66,99,5,1,0,0
+CSU Long Beach,icor,85,85,0,0,0,0,0,0,0,0,9,3,32,40,1,0,0
 College of San Mateo,cloudbank,236,236,0,0,33,1,36,39,0,32,31,0,29,35,0,0,0
 CSU Maritime,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CSU Long Beach,icor,85,85,0,0,0,0,0,0,0,0,9,3,32,40,1,0,0
 CSU Northridge,icor,70,70,0,0,0,0,0,0,0,0,0,0,22,48,0,0,0
 CSU Sonoma,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CSU San Jose,icor,109,109,0,0,0,0,0,0,0,0,0,0,0,109,0,0,0
 DeAnza College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU San Jose,icor,109,109,0,0,0,0,0,0,0,0,0,0,0,109,0,0,0
 East Tennessee State,cloudbank,15,15,0,0,0,0,0,0,0,0,0,0,0,14,1,0,0
-CSU Sacramento,icor,382,382,0,0,0,0,0,0,0,0,0,1,148,218,15,0,0
 Folsom Lake College,icor,108,108,0,0,0,0,0,0,0,0,0,0,43,65,0,0,0
-Community College San Francisco,cloudbank,710,705,0,0,2,0,65,109,1,127,105,1,142,146,5,0,0
+CSU Sacramento,icor,382,382,0,0,0,0,0,0,0,0,0,1,148,218,15,0,0
 East LA College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Fresno Community College,cloudbank,107,107,0,7,1,0,11,0,0,15,18,1,26,28,0,0,0
+Community College San Francisco,cloudbank,710,705,0,0,2,0,65,109,1,127,105,1,142,146,5,0,0
 George University,cloudbank,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0
 Glendale Community College,cloudbank,83,83,0,0,11,0,3,8,0,13,13,0,13,19,3,0,0
-Diablo Valley College,icor,424,424,0,0,0,0,0,0,0,0,0,94,114,143,72,0,0
-George Washington University,cloudbank,87,87,0,0,0,0,0,0,0,0,0,0,0,87,0,0,0
-Harvey Mudd College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 High School,cloudbank,93,93,0,0,0,0,0,0,0,1,65,1,1,24,1,0,0
 Evergreen Community College,cloudbank,342,340,0,0,0,0,12,26,0,50,51,25,64,39,73,0,0
-Golden West College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Kean University,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Foothill Community College,cloudbank,546,546,0,0,0,0,0,0,0,1,98,99,56,141,146,0,0
+George Washington University,cloudbank,87,87,0,0,0,0,0,0,0,0,0,0,0,87,0,0,0
+Harvey Mudd College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Diablo Valley College,icor,424,424,0,0,0,0,0,0,0,0,0,94,114,143,72,0,0
 Illinois Institute of Technology,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Kean University,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Golden West College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 CSU Monterey Bay,icor,734,734,0,0,0,0,0,0,0,0,0,5,239,468,21,0,0
 Long Beach Community College,cloudbank,5,5,0,0,0,0,0,0,0,0,0,0,2,0,3,0,0
 Mendocino College,cloudbank,6,6,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0
-Merritt College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Foothill Community College,cloudbank,546,546,0,0,0,0,0,0,0,1,98,99,56,141,146,0,0
 Los Angeles Harbor College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Cal Poly Humboldt,cloudbank,405,404,0,0,0,0,9,6,0,35,34,3,125,190,2,0,0
-Laney Community College,cloudbank,369,367,0,0,0,0,21,37,0,24,71,2,92,116,4,0,0
+Merritt College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 MiraCosta College,cloudbank,37,37,0,1,1,0,0,1,0,0,1,8,7,14,4,0,0
 Mission College,cloudbank,16,16,0,0,0,0,0,1,0,0,0,0,14,1,0,0,0
 LA Valley College,cloudbank,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
-El Camino Community College,cloudbank,922,895,0,6,16,0,26,57,19,121,158,19,90,344,28,0,0
-Moreno Community College,cloudbank,82,82,0,0,0,0,0,0,0,10,22,4,23,21,1,0,0
 Merced College,cloudbank,3,3,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0
+Laney Community College,cloudbank,369,367,0,0,0,0,21,37,0,24,71,2,92,116,4,0,0
+Cal Poly Humboldt,cloudbank,405,404,0,0,0,0,9,6,0,35,34,3,125,190,2,0,0
+El Camino Community College,cloudbank,922,895,0,6,16,0,26,57,19,121,158,19,90,343,29,0,0
+Moreno Community College,cloudbank,82,82,0,0,0,0,0,0,0,10,22,4,23,21,1,0,0
 Meharry Medical College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Oakland City University,cloudbank,2,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0
 Nova SouthEastern University,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-College of the Redwoods,cloudbank,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Oakland City University,cloudbank,2,2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0
 Oregon Institute of Technology,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Palomar Community College,cloudbank,29,27,0,0,0,0,0,0,0,0,2,0,0,25,0,0,0
 Norco Community College,cloudbank,129,129,0,0,0,0,12,0,0,18,21,0,37,39,1,0,0
 Reedley Community College,cloudbank,12,12,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0
-Palomar Community College,cloudbank,29,27,0,0,0,0,0,0,0,0,2,0,0,25,0,0,0
+College of the Redwoods,cloudbank,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Santiago Canyon College,cloudbank,12,12,0,0,0,0,0,0,0,0,0,0,1,10,1,0,0
 Los Angeles Community College,cloudbank,368,330,0,0,35,5,41,23,29,65,35,1,62,33,1,0,0
 SaddleBack Community College,cloudbank,125,125,0,0,0,0,0,0,0,24,28,2,25,46,0,0,0
 Shasta College,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Santiago Canyon College,cloudbank,12,12,0,0,0,0,0,0,0,0,0,0,1,10,1,0,0
 San Jose Community College,cloudbank,116,84,0,18,26,0,20,18,0,1,0,0,0,0,0,0,0
-Stanford University,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Rio Hondo Community College,cloudbank,30,30,0,0,0,0,0,0,0,7,4,0,10,9,0,0,0
-Spelman College,cloudbank,10,10,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0
-University of Toledo,cloudbank,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0
 Southern Oregon University,cloudbank,60,60,0,0,0,0,0,0,0,0,0,0,13,44,3,0,0
+Stanford University,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Spelman College,cloudbank,10,10,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0
 Santa Rosa Junior College,cloudbank,55,55,0,0,0,0,0,0,0,12,10,0,2,31,0,0,0
+Rio Hondo Community College,cloudbank,30,30,0,0,0,0,0,0,0,7,4,0,10,9,0,0,0
+University of Toledo,cloudbank,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0
 Sierra Community College,cloudbank,42,42,0,0,0,0,0,0,0,0,0,0,12,30,0,0,0
-Skyline Community College,cloudbank,271,248,0,1,0,2,7,14,37,26,37,33,27,37,27,0,0
+Pasadena Community College,cloudbank,406,406,0,0,0,0,31,55,1,70,60,2,98,87,1,0,0
+University of Maryland,cloudbank,23,23,0,0,0,0,0,0,0,0,0,0,0,18,5,0,0
 University of North Carolina at Chapel Hill,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-University of Texas at Permian Basin,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Skyline Community College,cloudbank,271,248,0,1,0,2,7,14,37,26,37,33,27,37,27,0,0
+University of North Carolina at Wilmington,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+University of North Dakota,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 University of Southern California,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+University of Texas at Permian Basin,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 University of Virginia,cloudbank,10,10,0,0,0,0,0,0,0,0,0,0,2,6,2,0,0
 Weber State University,cloudbank,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-University of North Dakota,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Willamette University,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-University of Maryland,cloudbank,23,23,0,0,0,0,0,0,0,0,0,0,0,18,5,0,0
-University of North Carolina at Wilmington,cloudbank,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-"University of California, Santa Cruz",icor,471,471,0,0,0,0,0,0,0,0,0,5,202,261,3,0,0
 Tuskegee University,cloudbank,19,19,9,7,1,2,0,0,0,0,0,0,0,0,0,0,0
 West LA College,cloudbank,27,27,0,0,0,0,7,0,0,15,1,0,4,0,0,0,0
-Pasadena Community College,cloudbank,406,406,0,0,0,0,31,55,1,70,60,2,98,87,1,0,0
+"University of California, Santa Cruz",icor,471,471,0,0,0,0,0,0,0,0,0,5,202,261,3,0,0
 Santa Barbara Community College,cloudbank,844,735,0,30,47,1,19,45,1,68,116,25,222,120,2,0,0
-Total,,9874,9631,9,70,173,11,320,439,88,735,991,422,2297,3571,440,0,0
+Total,,9874,9631,9,70,173,11,320,439,88,735,991,422,2297,3570,441,0,0
 Total Schools > 5 Users,,0,0,1,5,6,0,14,12,3,18,19,9,36,45,7,0,0
