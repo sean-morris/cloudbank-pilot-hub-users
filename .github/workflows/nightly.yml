@@ -36,7 +36,9 @@ jobs:
       - name: Run data pipeline
         id: pipeline
         shell: bash -el {0}
-        run: python main.py
+        run: |
+          set -o pipefail
+          python main.py 2>&1 | tee pipeline_output.txt
 
       # Always rebuild + commit, even if a few hubs failed (e.g. 403s).
       # The pipeline still writes users.csv / otter_standalone_use.csv with
@@ -60,8 +62,9 @@ jobs:
       - name: Notify Slack on failure
         if: failure()
         run: |
+          SUMMARY=$(grep '^Finished' pipeline_output.txt 2>/dev/null | tail -1)
           RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          TEXT=$(printf ':x: *Nightly Dashboard Update failed*\n<%s|Full run>' "$RUN_URL")
+          TEXT=$(printf ':x: *Nightly Dashboard Update failed*\n```\n%s\n```\n<%s|Full run>' "$SUMMARY" "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
             --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
             "${{ secrets.CLOUDBANK_SLACK_WEBHOOK_URL }}"
