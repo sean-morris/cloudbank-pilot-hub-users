@@ -46,14 +46,19 @@ jobs:
       - name: Notify Slack if anything is out of sync
         if: steps.sync_check.outputs.issue_count != '0'
         run: |
-          REPORT=$(cat sync_check_report.txt | head -c 3000)
+          REPORT=$(head -c 3000 sync_check_report.txt)
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          TEXT=$(printf ':warning: *Deployment sync check — %s item(s) found*\n```\n%s\n```\n<%s|Full run>' \
+            "${{ steps.sync_check.outputs.issue_count }}" "$REPORT" "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
-            --data "$(jq -n --arg text ":warning: *Deployment sync check found ${{ steps.sync_check.outputs.issue_count }} item(s)*\n\`\`\`\n$REPORT\n\`\`\`\nFull report: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" '{text: $text}')" \
+            --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
             "${{ secrets.SLACK_WEBHOOK_URL }}"
 
       - name: Notify Slack on failure
         if: failure()
         run: |
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          TEXT=$(printf ':x: *Deployment sync check workflow failed*\n<%s|Full run>' "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
-            --data "{\"text\":\":x: *Deployment sync check workflow failed*\nRun: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
+            --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
             "${{ secrets.SLACK_WEBHOOK_URL }}"

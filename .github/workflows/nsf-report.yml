@@ -56,14 +56,18 @@ jobs:
           if [ "${{ steps.nsf_report.outcome }}" != "success" ]; then
             STATUS="⚠️ ${{ steps.nsf_report.outputs.skipped_count }} institution(s) skipped"
           fi
-          SUMMARY=$(cat nsf_report_summary.txt 2>/dev/null | head -c 3000)
+          SUMMARY=$(head -c 3000 nsf_report_summary.txt 2>/dev/null)
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          TEXT=$(printf '*Nightly NSF report (dry run)* — %s\n```\n%s\n```\n<%s|Full run>' "$STATUS" "$SUMMARY" "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
-            --data "$(jq -n --arg text "*Nightly NSF report (dry run)* — $STATUS\n\`\`\`\n$SUMMARY\n\`\`\`\nFull run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" '{text: $text}')" \
+            --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
             "${{ secrets.SLACK_WEBHOOK_URL }}"
 
       - name: Notify Slack on workflow error
         if: failure()
         run: |
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          TEXT=$(printf ':x: *Nightly NSF ACCESS Usage Report workflow errored*\n<%s|Full run>' "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
-            --data "{\"text\":\":x: *Nightly NSF ACCESS Usage Report workflow errored*\nRun: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
+            --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
             "${{ secrets.SLACK_WEBHOOK_URL }}"
