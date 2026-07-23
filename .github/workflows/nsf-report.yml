@@ -52,13 +52,13 @@ jobs:
       - name: Post nightly summary to Slack
         if: always()
         run: |
-          STATUS="✅ clean"
+          STATUS=":white_check_mark: clean"
           if [ "${{ steps.nsf_report.outcome }}" != "success" ]; then
-            STATUS="⚠️ ${{ steps.nsf_report.outputs.skipped_count }} institution(s) skipped"
+            STATUS=":warning: ${{ steps.nsf_report.outputs.skipped_count }} institution(s) skipped"
           fi
           SUMMARY=$(head -c 3000 nsf_report_summary.txt 2>/dev/null)
           RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          TEXT=$(printf '*Nightly NSF report (dry run)* — %s\n```\n%s\n```\n<%s|Full run>' "$STATUS" "$SUMMARY" "$RUN_URL")
+          TEXT=$(printf '%s *Nightly NSF report (dry run)*\n```\n%s\n```\n<%s|Full run>' "$STATUS" "$SUMMARY" "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
             --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
             "${{ secrets.SLACK_WEBHOOK_URL }}"
