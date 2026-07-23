@@ -52,7 +52,7 @@ jobs:
       - name: Post nightly summary to Slack
         if: always()
         run: |
-          STATUS=":white_check_mark: clean"
+          STATUS=":white_check_mark:"
           if [ "${{ steps.nsf_report.outcome }}" != "success" ]; then
             STATUS=":warning: ${{ steps.nsf_report.outputs.skipped_count }} institution(s) skipped"
           fi
