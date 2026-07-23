@@ -1,0 +1,69 @@
+name: Nightly NSF ACCESS Usage Report
+
+# Runs in --dry-run mode until we have a confirmed XDMOD_TOKEN from the
+# NSF/XDMoD data team — builds the report and posts a nightly summary to
+# Slack, but never actually submits. Remove --dry-run below once ready to go
+# live.
+
+on:
+  schedule:
+    - cron: "30 6 * * *"   # 6:30am UTC every night, offset from the dashboard job
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Install sops
+        run: |
+          curl -Lo /usr/local/bin/sops \
+            https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
+          chmod +x /usr/local/bin/sops
+
+      - name: Set up conda environment
+        uses: conda-incubator/setup-miniconda@v4
+        with:
+          environment-file: environment.yaml
+          activate-environment: cloudbank-pilot-hub-users
+          auto-activate: false
+
+      - name: Decrypt pilot tokens
+        run: sops --decrypt enc-pilots.json > pilots.json
+
+      - name: Build NSF report (dry run)
+        id: nsf_report
+        continue-on-error: true
+        shell: bash -el {0}
+        env:
+          NSF_HASH_KEY: ${{ secrets.NSF_HASH_KEY }}
+        run: python scripts/build_nsf_report.py --dry-run
+
+      - name: Post nightly summary to Slack
+        if: always()
+        run: |
+          STATUS="✅ clean"
+          if [ "${{ steps.nsf_report.outcome }}" != "success" ]; then
+            STATUS="⚠️ ${{ steps.nsf_report.outputs.skipped_count }} institution(s) skipped"
+          fi
+          SUMMARY=$(cat nsf_report_summary.txt 2>/dev/null | head -c 3000)
+          curl -X POST -H 'Content-type: application/json' \
+            --data "$(jq -n --arg text "*Nightly NSF report (dry run)* — $STATUS\n\`\`\`\n$SUMMARY\n\`\`\`\nFull run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" '{text: $text}')" \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"
+
+      - name: Notify Slack on workflow error
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{\"text\":\":x: *Nightly NSF ACCESS Usage Report workflow errored*\nRun: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"

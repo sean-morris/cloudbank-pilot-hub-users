@@ -13,3 +13,6 @@ __pycache__
 .conda
 .secrets
 .secrets.tmp
+nsf_report.dry_run.json
+nsf_report_summary.txt
+sync_check_report.txt

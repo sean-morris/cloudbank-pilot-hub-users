@@ -1,0 +1,59 @@
+name: Nightly Deployment Sync Check
+
+on:
+  schedule:
+    - cron: "45 6 * * *"   # 6:45am UTC every night, offset from the other nightly jobs
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+  sync-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Install sops
+        run: |
+          curl -Lo /usr/local/bin/sops \
+            https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
+          chmod +x /usr/local/bin/sops
+
+      - name: Set up conda environment
+        uses: conda-incubator/setup-miniconda@v4
+        with:
+          environment-file: environment.yaml
+          activate-environment: cloudbank-pilot-hub-users
+          auto-activate: false
+
+      - name: Decrypt pilot tokens
+        run: sops --decrypt enc-pilots.json > pilots.json
+
+      - name: Run deployment sync check
+        id: sync_check
+        shell: bash -el {0}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/check_deployment_sync.py
+
+      - name: Notify Slack if anything is out of sync
+        if: steps.sync_check.outputs.issue_count != '0'
+        run: |
+          REPORT=$(cat sync_check_report.txt | head -c 3000)
+          curl -X POST -H 'Content-type: application/json' \
+            --data "$(jq -n --arg text ":warning: *Deployment sync check found ${{ steps.sync_check.outputs.issue_count }} item(s)*\n\`\`\`\n$REPORT\n\`\`\`\nFull report: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" '{text: $text}')" \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"
+
+      - name: Notify Slack on failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{\"text\":\":x: *Deployment sync check workflow failed*\nRun: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
+            "${{ secrets.SLACK_WEBHOOK_URL }}"

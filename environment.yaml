@@ -9,5 +9,6 @@ dependencies:
     - python-dateutil
     - requests
     - pandas
+    - pyyaml
     - otter-grader
     - firebase-admin==6.0.1
