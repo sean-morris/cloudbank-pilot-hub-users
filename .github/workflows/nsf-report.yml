@@ -61,7 +61,7 @@ jobs:
           TEXT=$(printf '%s *Nightly NSF report (dry run)*\n```\n%s\n```\n<%s|Full run>' "$STATUS" "$SUMMARY" "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
             --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
-            "${{ secrets.SLACK_WEBHOOK_URL }}"
+            "${{ secrets.CLOUDBANK_SLACK_WEBHOOK_URL }}"
 
       - name: Notify Slack on workflow error
         if: failure()
@@ -70,4 +70,4 @@ jobs:
           TEXT=$(printf ':x: *Nightly NSF ACCESS Usage Report workflow errored*\n<%s|Full run>' "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
             --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
-            "${{ secrets.SLACK_WEBHOOK_URL }}"
+            "${{ secrets.CLOUDBANK_SLACK_WEBHOOK_URL }}"

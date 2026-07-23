@@ -52,7 +52,7 @@ jobs:
             "${{ steps.sync_check.outputs.issue_count }}" "$REPORT" "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
             --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
-            "${{ secrets.SLACK_WEBHOOK_URL }}"
+            "${{ secrets.CLOUDBANK_SLACK_WEBHOOK_URL }}"
 
       - name: Notify Slack on failure
         if: failure()
@@ -61,4 +61,4 @@ jobs:
           TEXT=$(printf ':x: *Deployment sync check workflow failed*\n<%s|Full run>' "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
             --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
-            "${{ secrets.SLACK_WEBHOOK_URL }}"
+            "${{ secrets.CLOUDBANK_SLACK_WEBHOOK_URL }}"

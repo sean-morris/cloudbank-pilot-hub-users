@@ -60,6 +60,8 @@ jobs:
       - name: Notify Slack on failure
         if: failure()
         run: |
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          TEXT=$(printf ':x: *Nightly Dashboard Update failed*\n<%s|Full run>' "$RUN_URL")
           curl -X POST -H 'Content-type: application/json' \
-            --data "{\"text\":\":x: *Nightly Dashboard Update failed*\nRun: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\"}" \
-            "${{ secrets.SLACK_WEBHOOK_URL }}"
+            --data "$(jq -n --arg text "$TEXT" '{text: $text}')" \
+            "${{ secrets.CLOUDBANK_SLACK_WEBHOOK_URL }}"
