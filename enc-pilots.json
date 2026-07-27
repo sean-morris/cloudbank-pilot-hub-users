@@ -429,7 +429,7 @@
 		{
 			"url": "sbcc",
 			"where": "cloudbank",
-			"name": "Santa Barbara Community College",
+			"name": "Santa Barbara City College",
 			"token": "ENC[AES256_GCM,data:la0u+alpM1TMbBWuWIhov3pMf+K4M3yjUOkA5wPp4Fw=,iv:MS2z9nOBC1m9loZFqxhu/qF/UmendHapTgmhB/9mcRY=,tag:++lpa4tBHYZkn+zT+E3bcQ==,type:str]"
 		},
 		{
@@ -583,8 +583,8 @@
 		"azure_kv": null,
 		"hc_vault": null,
 		"age": null,
-		"lastmodified": "2026-07-23T16:04:01Z",
-		"mac": "ENC[AES256_GCM,data:9G7GJQDd96hM8Nh76aqVgaw3yuRV5x3VWApQOR8cxk/kEknTtuMuSgVuuOsl6dNVZPo3D8nBxdv+TQDcQJvsTtvZMpyWu+taqBbF/cCEiLtPMtf+fMmGnjtxnY3IqjoyUumhfyUcWrUEd0kIpLJ+D/SgIxkIQBQ7P2kozslMi8Y=,iv:sV4Wn3HnUrMR1awgDXKMiIughQLwH5Hb0fuQs4bVKoA=,tag:reh5tufapt1NOogC/MTtqA==,type:str]",
+		"lastmodified": "2026-07-27T15:45:48Z",
+		"mac": "ENC[AES256_GCM,data:3GoiyRpheL0EV6VKw8fc8Wa71ad/pp/UBBGAwBL4B8jj1xPS3XHz+3OKdk6buuJWnM6OQ2CRAZozhW+pKt3zvRKnCTljV5XDI4jwSW9yP2GwiHLF4FmwN6u+375phTy9JdYK9YCuJjfWv6bhCdMCAHtvYCd+9DAW9IZDWM/8kb8=,iv:shSi06q6NdzWaiqoI9F1P70X4esECJR+6c+QVVQKFHw=,tag:VOL/9NLQRF9rVQM+R1tdHw==,type:str]",
 		"pgp": null,
 		"encrypted_regex": "^(token)$",
 		"version": "3.8.1"

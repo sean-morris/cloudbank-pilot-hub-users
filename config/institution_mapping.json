@@ -297,6 +297,17 @@
     "note": "sheet name is a typo for 'Saddleback CC'"
   },
   {
+    "sheet_institution": "Santa Barbara City College",
+    "canonical_name": "Santa Barbara City College",
+    "access_id": "CIS261390",
+    "hub_url": "sbcc",
+    "institutional_id": "122889",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": ""
+  },
+  {
     "sheet_institution": "Shasta College",
     "canonical_name": "Shasta College",
     "access_id": "MTH260071",
