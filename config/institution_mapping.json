@@ -55,6 +55,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Carroll University",
+    "canonical_name": "Carroll University",
+    "access_id": "CIS261401",
+    "hub_url": "carrollu",
+    "institutional_id": "238458",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": ""
+  },
+  {
     "sheet_institution": "Chicago State University",
     "canonical_name": "Chicago State University",
     "access_id": "TRA250040",

@@ -358,7 +358,7 @@
 			"url": "nicc",
 			"where": "cloudbank",
 			"name": "Northeast Iowa Community College",
-			"token": "ENC[AES256_GCM,data:yAxHF3nB3c6C/E+gsew3,iv:xyq+a0ssNOJJYWni6kyFMXIqKroYMMEm93gPDYs1HZA=,tag:xvOR6U2ZCtSMQYY/hSK7AA==,type:str]"
+			"token": "ENC[AES256_GCM,data:jJqH4O9nOX2tnYRJNp1DBCIqJ6KBNGPDoWRqU5AIhH4=,iv:2E0zBjSoKeXvE3ZsobRDSfcZTYDUvj9UHEAfyVU7ngA=,tag:J1egZ0wzqLcMCKAh0IgGfg==,type:str]"
 		},
 		{
 			"url": "norco",
@@ -589,8 +589,8 @@
 		"azure_kv": null,
 		"hc_vault": null,
 		"age": null,
-		"lastmodified": "2026-07-27T22:09:00Z",
-		"mac": "ENC[AES256_GCM,data:ED+omJAQu1xIlyr0uajRJYr2mH3N835iA9snjK2C0S2Nj2E6UZ+bw0FWqDvaTYIBe9qyP9txdfh0L+Prz16A1cCgHEI+NdErk4++0U8D9Ht+Yvh38JLStdMHHhYj4oXjCKv3CZkgi3pdZKwnPw5EFKF3zXXbeBUUiZnqoR7rUCY=,iv:yLuJ82ohhffh2yyKWAz3yCn8WBEQvS9QAA/wQaXH/TE=,tag:97KCWz9raTdD7C9SkDghSA==,type:str]",
+		"lastmodified": "2026-07-28T18:53:58Z",
+		"mac": "ENC[AES256_GCM,data:NfRzJgZc0KBImtjne/Dmb1789ocSUO73H2YbTOAwv+7ACjA9AjddoUYo3ZshpG/SwG5j7FZCoPAWFCOEVNKxgbwnHHMGtEsCokYF27pHsTcl3p1t//PJf9a7hLXY6PNm1E9Aei8sPxkprtD0xiL4J98S439lwZo77cVPINmk9UU=,iv:7QdLXCqR2mMi1oDfjPFrqPcVjnHyrRWq8fxNDXL3C1o=,tag:L+dhQh0cuEeBWq6XBcPgOw==,type:str]",
 		"pgp": null,
 		"encrypted_regex": "^(token)$",
 		"version": "3.8.1"
