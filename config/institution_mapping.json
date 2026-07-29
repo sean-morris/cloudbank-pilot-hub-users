@@ -451,6 +451,17 @@
     "note": "Now deployed as the \"uwyo\" hub (previously no matching pilots.json entry existed). Token is a placeholder pending Sean generating a real one."
   },
   {
+    "sheet_institution": "Whitman College",
+    "canonical_name": "Whitman College",
+    "access_id": "MTH260079",
+    "hub_url": "whitman",
+    "institutional_id": "237057",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": ""
+  },
+  {
     "sheet_institution": "York University",
     "canonical_name": "York College (CUNY)",
     "access_id": "NAIRR260308",
