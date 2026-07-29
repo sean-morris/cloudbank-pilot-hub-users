@@ -32,6 +32,7 @@ import json
 import os
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 import pandas as pd
@@ -135,10 +136,11 @@ def build_report(hmac_key):
 
 def submit(records, token):
     payload = json.dumps(records).encode()
+    filename = f"{date.today().isoformat()}.cloudbank-classroom.json"
     response = requests.post(
         XDMOD_ENDPOINT,
         headers={"Authorization": f"Bearer {token}"},
-        files={"file": ("nsf_report.json", payload, "application/json")},
+        files={"file": (filename, payload, "application/json")},
     )
     response.raise_for_status()
     return response
