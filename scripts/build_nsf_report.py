@@ -177,7 +177,12 @@ def main():
         out_path.write_text(json.dumps(records, indent=2) + "\n")
         print(f"Dry run — wrote {out_path}, did not submit")
     elif records:
-        response = submit(records, token)
+        try:
+            response = submit(records, token)
+        except requests.RequestException as exc:
+            body = exc.response.text[:2000] if exc.response is not None else str(exc)
+            print(f"Finished with failure: XDMoD submission failed: {body}")
+            sys.exit(1)
         print(f"Submitted {len(records)} records, status={response.status_code}")
     else:
         print("Nothing to submit")
