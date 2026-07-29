@@ -85,6 +85,12 @@
 			"token": "ENC[AES256_GCM,data:L6jDGwAil/yxf/mgqt/aS7/5+vpEOpH9Qliz7J10rM8=,iv:8yxxllMnt4OH2/qQ680VVBnnISnC/89TjQyDVj+Ak7M=,tag:3goHSdozoGXZdD8Sefnqeg==,type:str]"
 		},
 		{
+			"url": "cpp",
+			"where": "icor",
+			"name": "Cal Poly Pomona",
+			"token": "ENC[AES256_GCM,data:WIuFZMKOvEh4xVp3QYnpio0MdW2QFk6glwUWbO5FGPsROcHItXo757c5SD3rGiRhGC442W6bw/Czi0VrnL/Esg==,iv:v1uvsWEdkjGmwuEWfwLJFIRlTWkrdmRnmNiyMfiMbqw=,tag:RkZ4MLTqNNq1hln8nBoTkA==,type:str]"
+		},
+		{
 			"url": "csm",
 			"where": "cloudbank",
 			"name": "College of San Mateo",
@@ -95,6 +101,12 @@
 			"where": "icor",
 			"name": "CSU Bakersfield",
 			"token": "ENC[AES256_GCM,data:fcpDowkcYQUy+O7MZfOzaND+zpBZneDVYbNnG7e5qYvPUqNohAzEXbsVghfNm2Ci3Dmc3hnvmSkWYQePkIzwpQ==,iv:ObAsYWEX7IL0oV7o+wNXBU04AxK6CI8J2U+t1aeaadM=,tag:l9ZDgsKRns519DFoii691w==,type:str]"
+		},
+		{
+			"url": "csudh",
+			"where": "icor",
+			"name": "CSU Dominguez Hills",
+			"token": "ENC[AES256_GCM,data:Mkma1s9EqgRBnBYqFrkqb8IoRgOR/AqdwaXqf7hOhyTBWmnyfyMZFuj07E7dsNCpsVVCQAniJSkVgg07r6qKFQ==,iv:WfKvFftAv18082zineE6XJ2kspSTG1NoL6DAxQAIMMU=,tag:xCvk4ZpWolXrHQmrMNtCwA==,type:str]"
 		},
 		{
 			"url": "csueb",
@@ -149,6 +161,12 @@
 			"where": "icor",
 			"name": "CSU Sacramento",
 			"token": "ENC[AES256_GCM,data:qC9bXUapRw2arsKCVKdq1e1+8AYq8XEreJKofLERoqLmr4YUnkBylS+6EhT1a6Mpqv3yKbFQxLLki167QX1v0g==,iv:51aCxkj1Jn/9SnHigptVcRI4iIXSCLsOpMph0x3yjaE=,tag:8SIlCmEFc2zYiseqvUUAxQ==,type:str]"
+		},
+		{
+			"url": "csusb",
+			"where": "icor",
+			"name": "CSU San Bernardino",
+			"token": "ENC[AES256_GCM,data:My1ftprPt/1CLy3MtjSECqoiwxLO7TMABpjU6Ainy5tClzEX/aXOtgOAewM7f3RoDpwD8HbetYrPKx9QApkzzw==,iv:LNrgDF3amZMeB0uMfarGRsAHRD8fcqofjErMueYNHSE=,tag:rl0WAldIpt+Wm0cC8H3tdQ==,type:str]"
 		},
 		{
 			"url": "csusj",
@@ -578,21 +596,16 @@
 		}
 	],
 	"sops": {
-		"kms": null,
+		"encrypted_regex": "^(token)$",
 		"gcp_kms": [
 			{
-				"resource_id": "projects/cal-icor-hubs/locations/global/keyRings/jupyterhubs/cryptoKeys/sops",
 				"created_at": "2026-07-27T22:08:59Z",
-				"enc": "CiQA471ganFsxVYmG+2EdFnzQihaLk0zTKbOrN+KOKiIHL6q1DUSSQDKo3g/51K+/6bR14nHJ6HH4f9E2NRMRSlnNkBLT0WtOUTo6GV1+dMLpJQt6SFqPb+qeupNzoV3Vcf6Fy3LvRMtQgKJPLorsGk="
+				"enc": "CiQA471ganFsxVYmG+2EdFnzQihaLk0zTKbOrN+KOKiIHL6q1DUSSQDKo3g/51K+/6bR14nHJ6HH4f9E2NRMRSlnNkBLT0WtOUTo6GV1+dMLpJQt6SFqPb+qeupNzoV3Vcf6Fy3LvRMtQgKJPLorsGk=",
+				"resource_id": "projects/cal-icor-hubs/locations/global/keyRings/jupyterhubs/cryptoKeys/sops"
 			}
 		],
-		"azure_kv": null,
-		"hc_vault": null,
-		"age": null,
-		"lastmodified": "2026-07-28T18:53:58Z",
-		"mac": "ENC[AES256_GCM,data:NfRzJgZc0KBImtjne/Dmb1789ocSUO73H2YbTOAwv+7ACjA9AjddoUYo3ZshpG/SwG5j7FZCoPAWFCOEVNKxgbwnHHMGtEsCokYF27pHsTcl3p1t//PJf9a7hLXY6PNm1E9Aei8sPxkprtD0xiL4J98S439lwZo77cVPINmk9UU=,iv:7QdLXCqR2mMi1oDfjPFrqPcVjnHyrRWq8fxNDXL3C1o=,tag:L+dhQh0cuEeBWq6XBcPgOw==,type:str]",
-		"pgp": null,
-		"encrypted_regex": "^(token)$",
-		"version": "3.8.1"
+		"lastmodified": "2026-07-29T18:00:26Z",
+		"mac": "ENC[AES256_GCM,data:idW88x8bA2Jw6neGBmJ25tZwsCkNfEqkBvCIsVMM0Qp2MKJgy27aUaMnmJrXDJzTFtNaKXrtlCFd+jtIpG7isPCKY/ia98dEgfnHUloo3vNWmqCnDxAQFU7Cv2i0nLOmuxubKrSyzI57OPRV0JK2th35GbvgcJByLAvy1VlEnKo=,iv:JW/xhaiXCp1q/9tKXmwnyTjN6n+TcMb5rBZ+iE/O9A8=,tag:t6Wy8AtQE0Wqn9teUZ5f8g==,type:str]",
+		"version": "3.13.2"
 	}
 }
