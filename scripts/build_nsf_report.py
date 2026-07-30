@@ -94,9 +94,11 @@ def hash_user_id(hmac_key, institutional_id, username):
 
 def build_report(hmac_key):
     """Returns (records, problems, warnings). problems is non-empty if the report is
-    incomplete (blocks submission for that institution). warnings flag data that's
-    still included but worth a human's attention (e.g. a user with no recorded
-    activity at all, which shouldn't normally happen)."""
+    incomplete (blocks submission for that institution). warnings flag hub users
+    excluded from the report because they have no recorded activity at all — these
+    are typically bulk-provisioned accounts (roster imports, etc.) that were never
+    actually used, so they're not reported as ACCESS allocation users. Tracked as
+    warnings (not silently dropped) so the exclusion stays visible."""
     current_access_ids = fetch_qualifying_access_ids()
     reviewed = load_reviewed_mapping()
 
@@ -126,13 +128,11 @@ def build_report(hmac_key):
             continue
 
         for user in users:
-            last_activity_date = None
-            if user["last_activity"]:
-                last_activity_date = convert(user["last_activity"]).date().isoformat()
-            else:
+            if not user["last_activity"]:
                 warnings.append(
                     {"institution": institution, "hub_url": entry["hub_url"], "username": user["name"]}
                 )
+                continue
 
             records.append(
                 {
@@ -140,7 +140,7 @@ def build_report(hmac_key):
                     "institutional_id": entry["institutional_id"],
                     "institution_name": entry["canonical_name"],
                     "hashed_user_id": hash_user_id(hmac_key, entry["institutional_id"], user["name"]),
-                    "last_activity_date": last_activity_date,
+                    "last_activity_date": convert(user["last_activity"]).date().isoformat(),
                 }
             )
 
@@ -186,8 +186,8 @@ def main():
             key = f"{w['institution']} ({w['hub_url']})"
             by_institution[key] = by_institution.get(key, 0) + 1
         lines.append(
-            f"{len(warnings)} user(s) across {len(by_institution)} institution(s) with no recorded "
-            f"activity (sent as last_activity_date: null):"
+            f"{len(warnings)} user(s) across {len(by_institution)} institution(s) excluded "
+            f"(no recorded activity):"
         )
         lines.extend(f"  - {k}: {v}" for k, v in sorted(by_institution.items()))
     report = "\n".join(lines)
