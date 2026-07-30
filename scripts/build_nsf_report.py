@@ -41,7 +41,7 @@ import requests
 BASE_DIR = Path(__file__).parent.parent
 sys.path.insert(0, str(BASE_DIR))
 
-from users import get_users  # noqa: E402
+from users import convert, get_users  # noqa: E402
 SHEET_CSV_URL = (
     "https://docs.google.com/spreadsheets/d/"
     "1pYQTs-zFvbvBl9FdMIjCUKRv9_O5vGvfdRgNgyBy9-0/export?format=csv&gid=352213565"
@@ -93,11 +93,15 @@ def hash_user_id(hmac_key, institutional_id, username):
 
 
 def build_report(hmac_key):
-    """Returns (records, problems). problems is non-empty if the report is incomplete."""
+    """Returns (records, problems, warnings). problems is non-empty if the report is
+    incomplete (blocks submission for that institution). warnings flag data that's
+    still included but worth a human's attention (e.g. a user with no recorded
+    activity at all, which shouldn't normally happen)."""
     current_access_ids = fetch_qualifying_access_ids()
     reviewed = load_reviewed_mapping()
 
     problems = []
+    warnings = []
     records = []
 
     for institution, access_id in current_access_ids.items():
@@ -122,16 +126,25 @@ def build_report(hmac_key):
             continue
 
         for user in users:
+            last_activity_date = None
+            if user["last_activity"]:
+                last_activity_date = convert(user["last_activity"]).date().isoformat()
+            else:
+                warnings.append(
+                    {"institution": institution, "hub_url": entry["hub_url"], "username": user["name"]}
+                )
+
             records.append(
                 {
                     "access_id": access_id,
                     "institutional_id": entry["institutional_id"],
                     "institution_name": entry["canonical_name"],
                     "hashed_user_id": hash_user_id(hmac_key, entry["institutional_id"], user["name"]),
+                    "last_activity_date": last_activity_date,
                 }
             )
 
-    return records, problems
+    return records, problems, warnings
 
 
 def submit(records, token):
@@ -160,19 +173,34 @@ def main():
         print("Finished with failure: XDMOD_TOKEN is not set")
         sys.exit(1)
 
-    records, problems = build_report(hmac_key)
+    records, problems, warnings = build_report(hmac_key)
     institution_count = len({r["institutional_id"] for r in records})
 
     lines = [f"Built report: {len(records)} user records across {institution_count} institutions"]
     if problems:
         lines.append(f"{len(problems)} institution(s) skipped:")
         lines.extend(f"  - {p}" for p in problems)
+    if warnings:
+        by_institution = {}
+        for w in warnings:
+            key = f"{w['institution']} ({w['hub_url']})"
+            by_institution[key] = by_institution.get(key, 0) + 1
+        lines.append(
+            f"{len(warnings)} user(s) across {len(by_institution)} institution(s) with no recorded "
+            f"activity (sent as last_activity_date: null):"
+        )
+        lines.extend(f"  - {k}: {v}" for k, v in sorted(by_institution.items()))
     report = "\n".join(lines)
     print(report)
 
-    # Institution names + error text only — never the payload itself (hashed_user_id
-    # values), so this is safe to post to Slack / show in a step summary.
+    # Institution names and aggregate counts only — never usernames or the actual
+    # submitted payload (hashed_user_id values) — so this is safe to post to Slack /
+    # show in a step summary. Full per-user warning detail goes to a local-only file.
     (BASE_DIR / "nsf_report_summary.txt").write_text(report + "\n")
+
+    if warnings:
+        detail_lines = [f"{w['institution']} ({w['hub_url']}): {w['username']}" for w in warnings]
+        (BASE_DIR / "nsf_report_warnings.txt").write_text("\n".join(detail_lines) + "\n")
 
     if args.dry_run:
         out_path = BASE_DIR / "nsf_report.dry_run.json"
@@ -201,6 +229,7 @@ def main():
             f.write(f"record_count={len(records)}\n")
             f.write(f"institution_count={institution_count}\n")
             f.write(f"skipped_count={len(problems)}\n")
+            f.write(f"warning_count={len(warnings)}\n")
 
     if problems:
         print("Finished with failure: one or more institutions were skipped (see above)")

@@ -73,6 +73,8 @@ jobs:
           STATUS=":white_check_mark:"
           if [ "${{ steps.nsf_report.outcome }}" != "success" ]; then
             STATUS=":warning: ${{ steps.nsf_report.outputs.skipped_count }} institution(s) skipped"
+          elif [ "${{ steps.nsf_report.outputs.warning_count }}" != "0" ]; then
+            STATUS=":warning: ${{ steps.nsf_report.outputs.warning_count }} warning(s)"
           fi
           SUMMARY=$(head -c 3000 nsf_report_summary.txt 2>/dev/null)
           RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"

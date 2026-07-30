@@ -15,4 +15,5 @@ __pycache__
 .secrets.tmp
 nsf_report.dry_run.json
 nsf_report_summary.txt
+nsf_report_warnings.txt
 sync_check_report.txt
