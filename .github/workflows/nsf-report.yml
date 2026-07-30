@@ -1,10 +1,8 @@
 name: Nightly NSF ACCESS Usage Report
 
-# The scheduled run always stays in --dry-run mode - it never submits on
-# its own. Going live permanently is a deliberate future edit (change the
-# default below), not something that happens implicitly. A manual
-# workflow_dispatch run can opt into a real submission via the "mode"
-# input, for supervised one-off tests.
+# The scheduled run submits for real every night. A manual workflow_dispatch
+# run defaults to --dry-run for safe ad-hoc testing, but can opt into a real
+# submission via the "mode" input when needed.
 
 on:
   schedule:
@@ -59,7 +57,7 @@ jobs:
           XDMOD_TOKEN: ${{ secrets.XDMOD_TOKEN }}
           NSF_HASH_KEY: ${{ secrets.NSF_HASH_KEY }}
         run: |
-          if [ "${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'dry-run' }}" = "live" ]; then
+          if [ "${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'live' }}" = "live" ]; then
             echo "mode=live" >> "$GITHUB_OUTPUT"
             python scripts/build_nsf_report.py
           else
