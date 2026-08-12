@@ -234,10 +234,10 @@
     "sheet_institution": "Monmouth University",
     "canonical_name": "Monmouth University",
     "access_id": "CIS261456",
-    "hub_url": "kean",
+    "hub_url": "monmouth",
     "institutional_id": "185572",
     "id_type": "ipeds_unitid",
-    "match_score": 71,
+    "match_score": 100,
     "reviewed": false,
     "note": ""
   },
@@ -256,12 +256,12 @@
     "sheet_institution": "Oak Ridge National Laboratory",
     "canonical_name": "Oak Ridge National Laboratory",
     "access_id": "BIO260430",
-    "hub_url": null,
+    "hub_url": "ornl",
     "institutional_id": null,
     "id_type": null,
-    "match_score": 0,
+    "match_score": 100,
     "reviewed": false,
-    "note": "no matching pilots.json hub found; no confident IPEDS match"
+    "note": "no confident IPEDS match"
   },
   {
     "sheet_institution": "Oakland City University",
@@ -341,6 +341,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Santa Monica College",
+    "canonical_name": "Santa Monica College",
+    "access_id": "CIS261508",
+    "hub_url": "srjc",
+    "institutional_id": "122977",
+    "id_type": "ipeds_unitid",
+    "match_score": 76,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Santiago Canyon College",
     "canonical_name": "Santiago Canyon College",
     "access_id": "MTH260087",
@@ -399,10 +410,10 @@
     "sheet_institution": "Tiffin University",
     "canonical_name": "Tiffin University",
     "access_id": "NAIRR260305",
-    "hub_url": "kean",
+    "hub_url": "tiffin",
     "institutional_id": "206048",
     "id_type": "ipeds_unitid",
-    "match_score": 75,
+    "match_score": 100,
     "reviewed": false,
     "note": ""
   },
@@ -421,12 +432,12 @@
     "sheet_institution": "University of Arkansas for Medical Sciences",
     "canonical_name": "University of Arkansas for Medical Sciences",
     "access_id": "MED260072",
-    "hub_url": null,
+    "hub_url": "uams",
     "institutional_id": "106263",
     "id_type": "ipeds_unitid",
-    "match_score": 0,
+    "match_score": 100,
     "reviewed": false,
-    "note": "no matching pilots.json hub found"
+    "note": ""
   },
   {
     "sheet_institution": "University of Maryland",
