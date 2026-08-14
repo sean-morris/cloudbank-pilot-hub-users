@@ -238,8 +238,19 @@
     "institutional_id": "185572",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
+  },
+  {
+    "sheet_institution": "Moreno Valley College",
+    "canonical_name": "Moreno Valley College",
+    "access_id": "CIS261543",
+    "hub_url": "moreno",
+    "institutional_id": "460394",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "corrected from an auto-match to the wrong school (lavc/LA Valley College)"
   },
   {
     "sheet_institution": "Nova SouthEastern University",
@@ -261,7 +272,7 @@
     "id_type": null,
     "match_score": 100,
     "reviewed": false,
-    "note": "no confident IPEDS match"
+    "note": "ORNL is a DOE national laboratory, not an accredited institution - has no IPEDS UnitID. Needs a different institutional_id scheme (like Albany High needed an NCES CCD School ID instead) - ask Sean/Conner what ID XDMoD wants for a national lab before this can be reported."
   },
   {
     "sheet_institution": "Oakland City University",
@@ -344,12 +355,12 @@
     "sheet_institution": "Santa Monica College",
     "canonical_name": "Santa Monica College",
     "access_id": "CIS261508",
-    "hub_url": "srjc",
+    "hub_url": "smc",
     "institutional_id": "122977",
     "id_type": "ipeds_unitid",
-    "match_score": 76,
-    "reviewed": false,
-    "note": ""
+    "match_score": 100,
+    "reviewed": true,
+    "note": "corrected from an auto-match to the wrong school (srjc/Santa Rosa Junior College); smc hub added to pilots.json with a placeholder token pending deployment"
   },
   {
     "sheet_institution": "Santiago Canyon College",
@@ -414,7 +425,7 @@
     "institutional_id": "206048",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -436,7 +447,7 @@
     "institutional_id": "106263",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {

@@ -370,7 +370,7 @@
 			"url": "monmouth",
 			"where": "cloudbank",
 			"name": "Monmouth University",
-			"token": "ENC[AES256_GCM,data:doxLIHEpKpoOxIaiAMpcOXtxF1iCEt0IyRj4l3UbLWW3IA==,iv:yNHyIhO8qKHT0kC0QO1OXBZnd25N7VpkoM29KaP85U8=,tag:n/oc8lVL+KK+V6ROHJpBGA==,type:str]"
+			"token": "ENC[AES256_GCM,data:LhhtSI4UMxMtlQHTLZWr+owiV9VmGL0a2TSd0IwFnbf7Bg==,iv:IUWM75nzd28v0R7vPP8q2jR6vQ89rIuvf87e4qBj+e8=,tag:It1oUulcNNuFO1bTU1MfAA==,type:str]"
 		},
 		{
 			"url": "moreno",
@@ -418,7 +418,7 @@
 			"url": "ornl",
 			"where": "cloudbank",
 			"name": "Oak Ridge National Laboratory",
-			"token": "ENC[AES256_GCM,data:MnWeL1v9PEKyhyeDbZEjxQ/j5RaezfUSZ5PVfDAqb6+vkg==,iv:r+aQtFsbrXgwtz5MeMzbdZLs3KAOCk/rlN73aTO+i18=,tag:OOGv+etY8Cu62Ga8SHUAxw==,type:str]"
+			"token": "ENC[AES256_GCM,data:LhhtSI4UMxMtlQHTLZWr+owiV9VmGL0a2TSd0IwFnbf7Bg==,iv:IUWM75nzd28v0R7vPP8q2jR6vQ89rIuvf87e4qBj+e8=,tag:It1oUulcNNuFO1bTU1MfAA==,type:str]"
 		},
 		{
 			"url": "palomar",
@@ -436,7 +436,7 @@
 			"url": "psu",
 			"where": "cloudbank",
 			"name": "Pennsylvania State University",
-			"token": "ENC[AES256_GCM,data:m8DQoni/11Fo24xJCz5HS0tlpI0JBHLyNHbQ8uf6brKKoA==,iv:dUYZ+ZVKH8sEiWKu4W/bwA/u1iTba9OT2WwvKhw75PA=,tag:BKQB7tOImeBlYjzLhioyOg==,type:str]"
+			"token": "ENC[AES256_GCM,data:LhhtSI4UMxMtlQHTLZWr+owiV9VmGL0a2TSd0IwFnbf7Bg==,iv:IUWM75nzd28v0R7vPP8q2jR6vQ89rIuvf87e4qBj+e8=,tag:It1oUulcNNuFO1bTU1MfAA==,type:str]"
 		},
 		{
 			"url": "redwoods",
@@ -526,13 +526,13 @@
 			"url": "tiffin",
 			"where": "cloudbank",
 			"name": "Tiffin University",
-			"token": "ENC[AES256_GCM,data:4rfmTLnxKIRSHtcXGDMkBYjllBIRoGx/0JRV3zg+Vt0G+w==,iv:UXDYXO2xrOKRnFDmLxhBGWhvCb9NBNTiJD41CkdGRpk=,tag:ollDMYM3upoQTjUyC57V6A==,type:str]"
+			"token": "ENC[AES256_GCM,data:LhhtSI4UMxMtlQHTLZWr+owiV9VmGL0a2TSd0IwFnbf7Bg==,iv:IUWM75nzd28v0R7vPP8q2jR6vQ89rIuvf87e4qBj+e8=,tag:It1oUulcNNuFO1bTU1MfAA==,type:str]"
 		},
 		{
 			"url": "tntech",
 			"where": "cloudbank",
 			"name": "Tennessee Technological University",
-			"token": "ENC[AES256_GCM,data:vxGfgdjA46M/7q5DPrBIj2JcCP5vNqG5h6hYhOgeeoC7PQ==,iv:kmVDhmJC4166+GnzEyjd89y6D93uScZX9UJXTNGm0Gg=,tag:2Uo+ld41ya2ab4R6iCqX5w==,type:str]"
+			"token": "ENC[AES256_GCM,data:LhhtSI4UMxMtlQHTLZWr+owiV9VmGL0a2TSd0IwFnbf7Bg==,iv:IUWM75nzd28v0R7vPP8q2jR6vQ89rIuvf87e4qBj+e8=,tag:It1oUulcNNuFO1bTU1MfAA==,type:str]"
 		},
 		{
 			"url": "toledo",
@@ -550,7 +550,7 @@
 			"url": "uams",
 			"where": "cloudbank",
 			"name": "University of Arkansas for Medical Sciences",
-			"token": "ENC[AES256_GCM,data:bj8lE5isro+lvCVC3ywrlbzQPaGs2oh5vYa1qTnABIW2RQ==,iv:vpnkeBfBLWjEk9XgwhzkcsIznordla0mQanGjKFzH9I=,tag:OD7qbjLq/LdwukauD4AZeQ==,type:str]"
+			"token": "ENC[AES256_GCM,data:LhhtSI4UMxMtlQHTLZWr+owiV9VmGL0a2TSd0IwFnbf7Bg==,iv:IUWM75nzd28v0R7vPP8q2jR6vQ89rIuvf87e4qBj+e8=,tag:It1oUulcNNuFO1bTU1MfAA==,type:str]"
 		},
 		{
 			"url": "ucsc",
@@ -641,6 +641,12 @@
 			"where": "cloudbank",
 			"name": "York College, CUNY",
 			"token": "ENC[AES256_GCM,data:8EPBbCidsO9E64jCGl0SY/hebttHkj0NNK8QiSp8Wvw=,iv:rPPkI3dsRWQuYmlybC8po+398thJ42XL4sksJ5X6cbU=,tag:JAuRLHV09MMe7CRZhCxEUg==,type:str]"
+		},
+		{
+			"url": "smc",
+			"where": "cloudbank",
+			"name": "Santa Monica College",
+			"token": "ENC[AES256_GCM,data:LhhtSI4UMxMtlQHTLZWr+owiV9VmGL0a2TSd0IwFnbf7Bg==,iv:IUWM75nzd28v0R7vPP8q2jR6vQ89rIuvf87e4qBj+e8=,tag:It1oUulcNNuFO1bTU1MfAA==,type:str]"
 		}
 	],
 	"sops": {
@@ -655,8 +661,8 @@
 		"azure_kv": null,
 		"hc_vault": null,
 		"age": null,
-		"lastmodified": "2026-08-11T17:41:46Z",
-		"mac": "ENC[AES256_GCM,data:DFQJx0gTUpW1CMyDi38cRlD9vseYq53Hp8XsouwzW/NyaQO9hclu/pSvaQJxZndz8+EAjKbdJDkPfZ5U6Km9qsnFpwd9TZLR2750GLgM/MpkGhkIFhpmwL1uCLiAAMzXpD6JtVa8868gdi4l/f+WLRthHlRYjixGLNPaOXjD/OE=,iv:ij8xcd5jjUw06Cz96QE7ymx7pO8W7Y3DEW7Ym12dLfQ=,tag:d1DbZX9mjMfKvcnSdGA0Cw==,type:str]",
+		"lastmodified": "2026-08-14T00:10:29Z",
+		"mac": "ENC[AES256_GCM,data:97DmWUBCM7e5lgxeRldcPtbXFFxEKAhm3RFPV5DGUlejcCENy2P3G/64giT3XYekC6DwP4GbOvskLF54oOsxK+D8n2LN3k7b2vhQAArb7iHb/Q2kWLvGXQGUoI8zN31JPLqRC69vGlinZvrra2NU/iNCEySiUflAX+cP5DtukWY=,iv:4T1YKnyUHQl2NbhhQiuzqbPSxeTzhnjbEetEa/Y0pEM=,tag:Vz/FUH7CqaVtG098i5fzbg==,type:str]",
 		"pgp": null,
 		"encrypted_regex": "^(token)$",
 		"version": "3.8.1"
