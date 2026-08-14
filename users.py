@@ -287,8 +287,12 @@ def main(process_all, one):
         # Update aggregate statistics
         if "number_all_users" in p:
             stats["all-users"][0] += p["number_all_users"]
+            if p["number_all_users"] > 5:
+                stats["all-users"][1] += 1
         if "number_all_users_ever_active" in p:
             stats["all-users-ever-active"][0] += p["number_all_users_ever_active"]
+            if p["number_all_users_ever_active"] > 5:
+                stats["all-users-ever-active"][1] += 1
 
         for term, begin, end in dates:
             if term in p:
