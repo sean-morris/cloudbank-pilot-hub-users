@@ -272,7 +272,7 @@
     "id_type": null,
     "match_score": 100,
     "reviewed": false,
-    "note": "ORNL is a DOE national laboratory, not an accredited institution - has no IPEDS UnitID. Needs a different institutional_id scheme (like Albany High needed an NCES CCD School ID instead) - ask Sean/Conner what ID XDMoD wants for a national lab before this can be reported."
+    "note": "no confident IPEDS match"
   },
   {
     "sheet_institution": "Oakland City University",
@@ -418,6 +418,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Tennessee Technological University",
+    "canonical_name": "Tennessee Technological University",
+    "access_id": "NAIRR260331",
+    "hub_url": "tntech",
+    "institutional_id": "221847",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Tiffin University",
     "canonical_name": "Tiffin University",
     "access_id": "NAIRR260305",
@@ -526,6 +537,17 @@
     "match_score": 100,
     "reviewed": true,
     "note": "Now deployed as the \"uwyo\" hub (previously no matching pilots.json entry existed). Token is a placeholder pending Sean generating a real one."
+  },
+  {
+    "sheet_institution": "Western Carolina University",
+    "canonical_name": "Western Carolina University",
+    "access_id": "MTH260089",
+    "hub_url": "wcu",
+    "institutional_id": "200004",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": false,
+    "note": ""
   },
   {
     "sheet_institution": "Whitman College",
