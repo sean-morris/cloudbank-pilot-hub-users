@@ -271,7 +271,7 @@
     "institutional_id": null,
     "id_type": null,
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": "no confident IPEDS match"
   },
   {
@@ -425,7 +425,7 @@
     "institutional_id": "221847",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -546,7 +546,7 @@
     "institutional_id": "200004",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
