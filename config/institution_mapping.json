@@ -11,6 +11,17 @@
     "note": "K-12 school, not in IPEDS (higher-ed only). Used the NCES Common Core of Data (CCD) School ID instead \u2014 Albany High, Albany City Unified, Albany CA. Confirm with NSF/XDMoD that a CCD School ID is acceptable as institutional_id for K-12 institutions before relying on this."
   },
   {
+    "sheet_institution": "Berea College",
+    "canonical_name": "Berea College",
+    "access_id": "CHE260154",
+    "hub_url": "berea",
+    "institutional_id": "156295",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": ""
+  },
+  {
     "sheet_institution": "Berkeley City College",
     "canonical_name": "Berkeley City College",
     "access_id": "SEE260012",
