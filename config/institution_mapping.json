@@ -209,6 +209,17 @@
     "note": "corrected from an auto-match to the wrong school (Illinois Media School); Illinois Tech = Illinois Institute of Technology"
   },
   {
+    "sheet_institution": "Ivy Tech Community College",
+    "canonical_name": "Ivy Tech Community College",
+    "access_id": "ENG260021",
+    "hub_url": "ivytech",
+    "institutional_id": "150987",
+    "id_type": "ipeds_unitid",
+    "match_score": 83,
+    "reviewed": true,
+    "note": ""
+  },
+  {
     "sheet_institution": "Kean University",
     "canonical_name": "Kean University",
     "access_id": "BIO260005",
