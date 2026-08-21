@@ -154,6 +154,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Eastern Michigan University",
+    "canonical_name": "Eastern Michigan University",
+    "access_id": "NAIRR260348",
+    "hub_url": "wcu",
+    "institutional_id": "169798",
+    "id_type": "ipeds_unitid",
+    "match_score": 70,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "El Camino Community College",
     "canonical_name": "El Camino Community College",
     "access_id": "SEE260013",
@@ -163,6 +174,17 @@
     "match_score": 100,
     "reviewed": true,
     "note": "corrected from an auto-match to the wrong school (El Paso Community College)"
+  },
+  {
+    "sheet_institution": "El Paso Community College",
+    "canonical_name": "El Paso Community College",
+    "access_id": "CIS261569",
+    "hub_url": "elcamino",
+    "institutional_id": "224642",
+    "id_type": "ipeds_unitid",
+    "match_score": 88,
+    "reviewed": false,
+    "note": ""
   },
   {
     "sheet_institution": "George Washington University",
