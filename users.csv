@@ -1,25 +1,25 @@
 college,where,all-users,all-users-ever-active,summer_2022,fall_2022,spring_2023,summer_2023,fall_2023,spring_2024,summer_2024,fall_2024,spring_2025,summer_2025,fall_2025,spring_2026,summer_2026,fall_2026,spring_2027
 Cal Poly Pomona,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-CSU Chico,icor,72,72,0,0,0,0,0,0,0,0,0,0,1,65,4,2,0
-CSU Dominguez Hills,icor,4,4,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0
-CSU Los Angeles,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-CSU Fullerton,icor,172,172,0,0,0,0,0,0,0,0,0,66,98,5,1,2,0
-CSU Bakersfield,icor,64,64,0,0,0,0,0,0,0,0,0,0,29,34,0,1,0
-CSU Fresno,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CSU Long Beach,icor,85,85,0,0,0,0,0,0,0,0,9,3,32,39,0,2,0
+CSU Bakersfield,icor,65,65,0,0,0,0,0,0,0,0,0,0,29,34,0,2,0
+CSU Chico,icor,72,72,0,0,0,0,0,0,0,0,0,0,1,65,3,3,0
 CSU Maritime,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CSU San Marcos,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
-CSU San Bernardino,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU Fullerton,icor,172,172,0,0,0,0,0,0,0,0,0,66,98,5,1,2,0
+CSU Dominguez Hills,icor,4,4,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0
 CSU Northridge,icor,70,70,0,0,0,0,0,0,0,0,0,0,22,48,0,0,0
+CSU Long Beach,icor,85,85,0,0,0,0,0,0,0,0,9,3,32,39,0,2,0
+CSU Los Angeles,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+CSU Fresno,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU San Bernardino,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU East Bay,icor,224,223,0,0,0,0,0,0,0,0,0,2,43,96,3,79,0
+CSU Stanislaus,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU San Marcos,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
 CSU Sonoma,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
 CSU San Jose,icor,173,173,0,0,0,0,0,0,0,0,0,0,0,108,0,65,0
-CSU East Bay,icor,214,213,0,0,0,0,0,0,0,0,0,2,43,97,3,68,0
-CSU Stanislaus,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 CSU Sacramento,icor,382,382,0,0,0,0,0,0,0,0,0,1,148,213,10,10,0
 Folsom Lake College,icor,110,110,0,0,0,0,0,0,0,0,0,0,43,65,0,2,0
 Diablo Valley College,icor,426,426,0,0,0,0,0,0,0,0,0,94,114,141,74,2,0
-CSU Monterey Bay,icor,738,738,0,0,0,0,0,0,0,0,0,5,237,454,29,12,0
+CSU Monterey Bay,icor,742,742,0,0,0,0,0,0,0,0,0,5,235,449,29,23,0
 University of Southern California,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 "University of California, Santa Cruz",icor,475,475,0,0,0,0,0,0,0,0,0,5,202,261,2,5,0
-Total,,2989,2988,0,0,0,0,0,0,0,0,9,176,969,1530,127,175,0
+Total,,3004,3003,0,0,0,0,0,0,0,0,9,176,967,1524,126,199,0
 Total Schools > 5 Users,,12,12,0,0,0,0,0,0,0,0,1,2,10,11,3,4,0
