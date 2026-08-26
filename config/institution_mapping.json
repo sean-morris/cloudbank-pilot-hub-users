@@ -187,6 +187,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Florida Gulf Coast University",
+    "canonical_name": "Florida Gulf Coast University",
+    "access_id": "NAIRR260312",
+    "hub_url": "nova",
+    "institutional_id": "433660",
+    "id_type": "ipeds_unitid",
+    "match_score": 63,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "George Washington University",
     "canonical_name": "George Washington University",
     "access_id": "CIS251343",
@@ -217,6 +228,17 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "Howard University",
+    "canonical_name": "Howard University",
+    "access_id": "MTH260104",
+    "hub_url": "clarku",
+    "institutional_id": "131520",
+    "id_type": "ipeds_unitid",
+    "match_score": 79,
+    "reviewed": false,
     "note": ""
   },
   {
@@ -506,6 +528,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "University of Maine",
+    "canonical_name": "University of Maine",
+    "access_id": "SEE260018",
+    "hub_url": "umd",
+    "institutional_id": "161253",
+    "id_type": "ipeds_unitid",
+    "match_score": 83,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "University of Maryland",
     "canonical_name": "University of Maryland",
     "access_id": "EES260007",
@@ -536,6 +569,17 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "University of Texas at Arlington",
+    "canonical_name": "University of Texas at Arlington",
+    "access_id": "CIS261487",
+    "hub_url": "utpb",
+    "institutional_id": "228769",
+    "id_type": "ipeds_unitid",
+    "match_score": 76,
+    "reviewed": false,
     "note": ""
   },
   {
