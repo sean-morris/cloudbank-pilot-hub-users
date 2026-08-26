@@ -1,25 +1,27 @@
 college,where,all-users,all-users-ever-active,summer_2022,fall_2022,spring_2023,summer_2023,fall_2023,spring_2024,summer_2024,fall_2024,spring_2025,summer_2025,fall_2025,spring_2026,summer_2026,fall_2026,spring_2027
-Cal Poly Pomona,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
 CSU Dominguez Hills,icor,4,4,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0
-CSU Fresno,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CSU Los Angeles,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-CSU Chico,icor,169,169,0,0,0,0,0,0,0,0,0,0,1,63,2,103,0
 CSU Fullerton,icor,173,173,0,0,0,0,0,0,0,0,0,66,98,4,1,4,0
-CSU San Bernardino,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CSU Northridge,icor,70,70,0,0,0,0,0,0,0,0,0,0,22,48,0,0,0
+CSU Los Angeles,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+CSU Fresno,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU Bakersfield,icor,89,89,0,0,0,0,0,0,0,0,0,0,29,33,0,27,0
 CSU Maritime,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CSU East Bay,icor,285,284,0,0,0,0,0,0,0,0,0,2,43,96,3,140,0
-CSU Long Beach,icor,97,97,0,0,0,0,0,0,0,0,9,3,31,39,0,15,0
+CSU Long Beach,icor,110,110,0,0,0,0,0,0,0,0,9,3,31,39,0,28,0
+CSU Northridge,icor,70,70,0,0,0,0,0,0,0,0,0,0,22,48,0,0,0
+Cal Poly Pomona,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+CSU San Bernardino,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CSU San Jose,icor,174,174,0,0,0,0,0,0,0,0,0,0,0,108,0,66,0
 CSU San Marcos,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
-CSU San Jose,icor,173,173,0,0,0,0,0,0,0,0,0,0,0,108,0,65,0
+CSU Chico,icor,206,206,0,0,0,0,0,0,0,0,0,0,1,61,2,142,0
+CSU East Bay,icor,288,287,0,0,0,0,0,0,0,0,0,2,43,96,3,143,0
 CSU Sonoma,icor,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
 CSU Stanislaus,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Folsom Lake College,icor,112,112,0,0,0,0,0,0,0,0,0,0,43,65,0,4,0
 CSU Sacramento,icor,382,382,0,0,0,0,0,0,0,0,0,1,148,213,10,10,0
-Folsom Lake College,icor,111,111,0,0,0,0,0,0,0,0,0,0,43,65,0,3,0
-Diablo Valley College,icor,445,445,0,0,0,0,0,0,0,0,0,94,114,141,72,23,0
-CSU Bakersfield,icor,83,83,0,0,0,0,0,0,0,0,0,0,29,33,0,21,0
-CSU Monterey Bay,icor,799,799,0,0,0,0,0,0,0,0,0,5,230,432,28,103,0
+Los Angeles Community College,cloudbank,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+Laney Community College,cloudbank,18,18,0,0,0,0,0,0,0,0,0,0,0,0,0,18,0
+Diablo Valley College,icor,479,479,0,0,0,0,0,0,0,0,0,94,114,141,71,58,0
+CSU Monterey Bay,icor,947,947,0,0,0,0,0,0,0,0,0,5,213,375,24,329,0
 University of Southern California,icor,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 "University of California, Santa Cruz",icor,475,475,0,0,0,0,0,0,0,0,0,5,202,261,2,5,0
-Total,,3270,3269,0,0,0,0,0,0,0,0,9,176,961,1503,122,496,0
-Total Schools > 5 Users,,12,12,0,0,0,0,0,0,0,0,1,2,10,11,3,8,0
+Total,,3532,3531,0,0,0,0,0,0,0,0,9,176,944,1444,117,839,0
+Total Schools > 5 Users,,13,13,0,0,0,0,0,0,0,0,1,2,10,11,3,9,0
