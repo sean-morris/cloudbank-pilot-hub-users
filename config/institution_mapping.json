@@ -385,6 +385,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Rhode Island College",
+    "canonical_name": "Rhode Island College",
+    "access_id": "CIS261609",
+    "hub_url": "spelman",
+    "institutional_id": "217420",
+    "id_type": "ipeds_unitid",
+    "match_score": 69,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Rio Hondo College",
     "canonical_name": "Rio Hondo College",
     "access_id": "CIS261320",
