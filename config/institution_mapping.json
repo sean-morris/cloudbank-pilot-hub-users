@@ -161,7 +161,7 @@
     "institutional_id": "169798",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -183,7 +183,7 @@
     "institutional_id": "224642",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -194,7 +194,7 @@
     "institutional_id": "433660",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -238,7 +238,7 @@
     "institutional_id": "131520",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -392,7 +392,7 @@
     "institutional_id": "217420",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -546,7 +546,7 @@
     "institutional_id": "161253",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -590,7 +590,7 @@
     "institutional_id": "228769",
     "id_type": "ipeds_unitid",
     "match_score": 94,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
