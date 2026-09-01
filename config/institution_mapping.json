@@ -57,7 +57,18 @@
   {
     "sheet_institution": "Carnegie Mellon University",
     "canonical_name": "Carnegie Mellon University",
-    "access_id": "MED260015",
+    "access_id": "SOC260083",
+    "hub_url": "cmu",
+    "institutional_id": "211440",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "Carnegie Mellon University",
+    "canonical_name": "Carnegie Mellon University",
+    "access_id": "SOC260083",
     "hub_url": "cmu",
     "institutional_id": "211440",
     "id_type": "ipeds_unitid",
