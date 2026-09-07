@@ -55,6 +55,17 @@
     "note": "matched against 'CUNY Borough of Manhattan Community College NY'"
   },
   {
+    "sheet_institution": "California State University, San Marcos",
+    "canonical_name": "California State University, San Marcos",
+    "access_id": "CIS261765",
+    "hub_url": "chicagostate",
+    "institutional_id": "366711",
+    "id_type": "ipeds_unitid",
+    "match_score": 63,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Carnegie Mellon University",
     "canonical_name": "Carnegie Mellon University",
     "access_id": "SOC260083",
@@ -206,6 +217,17 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "Foothill College",
+    "canonical_name": "Foothill College",
+    "access_id": "CIS261796",
+    "hub_url": "foothill",
+    "institutional_id": "114716",
+    "id_type": "ipeds_unitid",
+    "match_score": 76,
+    "reviewed": false,
     "note": ""
   },
   {
