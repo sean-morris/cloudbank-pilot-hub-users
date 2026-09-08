@@ -58,11 +58,11 @@
     "sheet_institution": "California State University, San Marcos",
     "canonical_name": "California State University, San Marcos",
     "access_id": "CIS261765",
-    "hub_url": "chicagostate",
+    "hub_url": "csusm",
     "institutional_id": "366711",
     "id_type": "ipeds_unitid",
-    "match_score": 63,
-    "reviewed": false,
+    "match_score": 100,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -226,9 +226,9 @@
     "hub_url": "foothill",
     "institutional_id": "114716",
     "id_type": "ipeds_unitid",
-    "match_score": 76,
-    "reviewed": false,
-    "note": ""
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 114716 is Foothill College itself, not the Foothill-De Anza Community College District (114831). De Anza is a separate hub and needs its own entry."
   },
   {
     "sheet_institution": "George Washington University",
@@ -702,27 +702,5 @@
     "match_score": 100,
     "reviewed": true,
     "note": "Now deployed as the \"york\" hub (previously no matching pilots.json entry existed). Token is a placeholder pending Sean generating a real one."
-  },
-  {
-    "sheet_institution": "California State University, San Marcos",
-    "canonical_name": "California State University, San Marcos",
-    "access_id": "CIS261765",
-    "hub_url": "csusm",
-    "institutional_id": "366711",
-    "id_type": "ipeds_unitid",
-    "match_score": 100,
-    "reviewed": true,
-    "note": ""
-  },
-  {
-    "sheet_institution": "Foothill College",
-    "canonical_name": "Foothill College",
-    "access_id": "CIS261796",
-    "hub_url": "foothill",
-    "institutional_id": "114716",
-    "id_type": "ipeds_unitid",
-    "match_score": 100,
-    "reviewed": true,
-    "note": "IPEDS 114716 is Foothill College itself, not the Foothill-De Anza Community College District (114831). De Anza is a separate hub and needs its own entry."
   }
 ]
