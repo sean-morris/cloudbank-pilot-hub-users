@@ -669,5 +669,16 @@
     "match_score": 100,
     "reviewed": true,
     "note": "Now deployed as the \"york\" hub (previously no matching pilots.json entry existed). Token is a placeholder pending Sean generating a real one."
+  },
+  {
+    "sheet_institution": "California State University, San Marcos",
+    "canonical_name": "California State University, San Marcos",
+    "access_id": "CIS261765",
+    "hub_url": "csusm",
+    "institutional_id": "366711",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": ""
   }
 ]
