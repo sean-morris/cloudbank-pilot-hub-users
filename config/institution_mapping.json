@@ -99,6 +99,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Chabot CC",
+    "canonical_name": "Chabot CC",
+    "access_id": "MTH260115",
+    "hub_url": "chabot",
+    "institutional_id": "111920",
+    "id_type": "ipeds_unitid",
+    "match_score": 70,
+    "reviewed": false,
+    "note": "low-confidence IPEDS match (matched against 'Chabot College CA')"
+  },
+  {
     "sheet_institution": "Chicago State University",
     "canonical_name": "Chicago State University",
     "access_id": "TRA250040",
