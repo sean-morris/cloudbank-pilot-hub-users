@@ -110,6 +110,17 @@
     "note": "low-confidence IPEDS match (matched against 'Chabot College CA')"
   },
   {
+    "sheet_institution": "Chaminade University of Honolulu",
+    "canonical_name": "Chaminade University of Honolulu",
+    "access_id": "BIO260533",
+    "hub_url": "toledo",
+    "institutional_id": "141486",
+    "id_type": "ipeds_unitid",
+    "match_score": 62,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Chicago State University",
     "canonical_name": "Chicago State University",
     "access_id": "TRA250040",
@@ -316,6 +327,17 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "Las Positas College",
+    "canonical_name": "Las Positas College",
+    "access_id": "CIS261913",
+    "hub_url": "shasta",
+    "institutional_id": "366401",
+    "id_type": "ipeds_unitid",
+    "match_score": 73,
+    "reviewed": false,
     "note": ""
   },
   {
