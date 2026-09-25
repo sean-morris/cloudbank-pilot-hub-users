@@ -22,6 +22,7 @@ Usage:
     python scripts/check_deployment_sync.py
 """
 
+import base64
 import difflib
 import json
 import os
@@ -42,6 +43,15 @@ MAPPING_PATH = BASE_DIR / "config" / "institution_mapping.json"
 INFRA_REPO = "2i2c-org/infrastructure"
 INFRA_CLUSTER_YAML_PATH = "config/clusters/cloudbank/cluster.yaml"
 
+# cloudbank-classroom-usage keeps its OWN copy of the CloudBank slice of
+# enc-pilots.json, re-encrypted with CloudBank's KMS key. Nothing syncs them,
+# so a hub added here is invisible to cost/usage reporting until someone
+# re-syncs -- csusm went unreported that way for two and a half weeks.
+# sops encrypts only the `token` field, so the hub names are readable straight
+# out of the encrypted file and this needs no KMS access.
+COPY_REPO = "cloudbank-project/cloudbank-classroom-usage"
+COPY_PILOTS_PATH = "enc-pilots.json"
+
 # Real deployments in the cloudbank cluster that are not a single CloudBank
 # member institution, so they're out of scope for ACCESS-ID / roster matching.
 NON_INSTITUTION_SLUGS = {"cra", "authoring", "demo", "gpu-demo", "staging", "high"}
@@ -53,7 +63,6 @@ def fetch_infra_hubs():
         ["gh", "api", f"repos/{INFRA_REPO}/contents/{INFRA_CLUSTER_YAML_PATH}", "--jq", ".content"],
         capture_output=True, text=True, check=True,
     ).stdout
-    import base64
     cluster = yaml.safe_load(base64.b64decode(raw))
     return {
         hub["name"]: hub["display_name"]
@@ -113,6 +122,36 @@ def match_sheet_institution(candidate_names, sheet_institutions, known_match):
     return None
 
 
+def registry_cloudbank_hubs():
+    """Every CloudBank pilot in this repo, non-institution hubs included.
+
+    Deliberately not load_pilots(), which drops NON_INSTITUTION_SLUGS -- the
+    copy downstream tracks those too, so filtering here would report drift
+    that isn't there.
+    """
+    pilots = json.loads(PILOTS_PATH.read_text())["pilots"]
+    return {p["url"]: p["name"] for p in pilots if p["where"] == "cloudbank"}
+
+
+def fetch_copy_hubs():
+    """The pilot list cloudbank-classroom-usage actually queries, or None.
+
+    Returns None rather than raising if the repo can't be read: this is a
+    data-quality report and an unreachable sibling repo must not take the
+    other four checks down with it.
+    """
+    try:
+        raw = subprocess.run(
+            ["gh", "api", f"repos/{COPY_REPO}/contents/{COPY_PILOTS_PATH}", "--jq", ".content"],
+            capture_output=True, text=True, check=True,
+        ).stdout
+        data = json.loads(base64.b64decode(raw))
+        return {p["url"]: p.get("name", p["url"]) for p in data["pilots"]}
+    except Exception as exc:
+        print(f"  note: could not read {COPY_REPO} ({exc}) -- skipping copy-sync check")
+        return None
+
+
 def suggest_sheet_institution(display_name, sheet_institutions):
     best = difflib.get_close_matches(display_name, sheet_institutions, n=1, cutoff=0.6)
     if not best:
@@ -136,7 +175,21 @@ def check():
         "token_but_not_deployed": [],  # in pilots.json, not in infra — stale/decommissioned
         "deployed_no_access_id": [],       # confidently matched to a sheet row, but no ACCESS ID yet
         "needs_review": [],                # can't confidently tell if this institution has an ACCESS ID or not
+        "copy_out_of_sync": [],            # this repo vs cloudbank-classroom-usage's copy
     }
+
+    copy_hubs = fetch_copy_hubs()
+    if copy_hubs is not None:
+        registry_cb = registry_cloudbank_hubs()
+        for slug in sorted(set(registry_cb) - set(copy_hubs)):
+            issues["copy_out_of_sync"].append(
+                f"{registry_cb[slug]} ({slug}) — here but missing from the copy; "
+                f"cost/usage reporting under-counts it"
+            )
+        for slug in sorted(set(copy_hubs) - set(registry_cb)):
+            issues["copy_out_of_sync"].append(
+                f"{copy_hubs[slug]} ({slug}) — in the copy but not here; stale entry"
+            )
 
     for slug in sorted(infra_slugs - pilot_slugs):
         issues["deployed_but_no_token"].append(f"{infra_hubs[slug]} ({slug}) — deployed in infra, no entry in pilots.json")
@@ -172,6 +225,7 @@ def format_report(issues):
         "token_but_not_deployed": "In pilots.json but not found in infra (possibly decommissioned)",
         "deployed_no_access_id": "Deployed and in the roster, but no ACCESS ID yet",
         "needs_review": "Can't confidently match to a roster row (needs a human to confirm the pairing)",
+        "copy_out_of_sync": "Out of sync with cloudbank-classroom-usage's copy of the pilot list",
     }
     lines = []
     total = 0
