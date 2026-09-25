@@ -106,7 +106,7 @@
     "institutional_id": "111920",
     "id_type": "ipeds_unitid",
     "match_score": 70,
-    "reviewed": false,
+    "reviewed": true,
     "note": "low-confidence IPEDS match (matched against 'Chabot College CA')"
   },
   {
@@ -117,7 +117,7 @@
     "institutional_id": "141486",
     "id_type": "ipeds_unitid",
     "match_score": 62,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -337,7 +337,7 @@
     "institutional_id": "366401",
     "id_type": "ipeds_unitid",
     "match_score": 73,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
