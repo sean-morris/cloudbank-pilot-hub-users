@@ -341,6 +341,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Marian University",
+    "canonical_name": "Marian University",
+    "access_id": "MED260086",
+    "hub_url": "marian",
+    "institutional_id": "151786",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 151786 is Marian University in Indianapolis, IN (formerly Marian College), not Marian University of Wisconsin (239080)."
+  },
+  {
     "sheet_institution": "Meharry Medical College",
     "canonical_name": "Meharry Medical College",
     "access_id": "BIO260026",
