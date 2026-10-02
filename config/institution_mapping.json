@@ -1,5 +1,16 @@
 [
   {
+    "sheet_institution": "\tMichigan Technological University",
+    "canonical_name": "\tMichigan Technological University",
+    "access_id": "CIS262082",
+    "hub_url": "tntech",
+    "institutional_id": "171128",
+    "id_type": "ipeds_unitid",
+    "match_score": 76,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Albany High",
     "canonical_name": "Albany High",
     "access_id": "CIS261259",
@@ -55,6 +66,17 @@
     "note": "matched against 'CUNY Borough of Manhattan Community College NY'"
   },
   {
+    "sheet_institution": "California Polytechnic State University, San Luis Obispo",
+    "canonical_name": "California Polytechnic State University, San Luis Obispo",
+    "access_id": "MCH260078",
+    "hub_url": "calpolyslo",
+    "institutional_id": "110422",
+    "id_type": "ipeds_unitid",
+    "match_score": 97,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "California State University, San Marcos",
     "canonical_name": "California State University, San Marcos",
     "access_id": "CIS261765",
@@ -108,6 +130,17 @@
     "match_score": 70,
     "reviewed": true,
     "note": "low-confidence IPEDS match (matched against 'Chabot College CA')"
+  },
+  {
+    "sheet_institution": "Chaffey College",
+    "canonical_name": "Chaffey College",
+    "access_id": "SEE260023",
+    "hub_url": "chaffey",
+    "institutional_id": "111939",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": false,
+    "note": ""
   },
   {
     "sheet_institution": "Chaminade University of Honolulu",
@@ -185,6 +218,17 @@
     "match_score": 100,
     "reviewed": true,
     "note": "official IPEDS name is 'City College of San Francisco'"
+  },
+  {
+    "sheet_institution": "East Los Angeles College",
+    "canonical_name": "East Los Angeles College",
+    "access_id": "MTH260146",
+    "hub_url": "elac",
+    "institutional_id": "113856",
+    "id_type": "ipeds_unitid",
+    "match_score": 77,
+    "reviewed": false,
+    "note": ""
   },
   {
     "sheet_institution": "East Tennessee State University",
@@ -308,6 +352,17 @@
     "note": "corrected from an auto-match to the wrong school (Illinois Media School); Illinois Tech = Illinois Institute of Technology"
   },
   {
+    "sheet_institution": "Indiana University Bloomington",
+    "canonical_name": "Indiana University Bloomington",
+    "access_id": "CIS261560",
+    "hub_url": "iub",
+    "institutional_id": "151351",
+    "id_type": "ipeds_unitid",
+    "match_score": 97,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Ivy Tech Community College",
     "canonical_name": "Ivy Tech Community College",
     "access_id": "ENG260021",
@@ -360,6 +415,17 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "Mendocino College",
+    "canonical_name": "Mendocino College",
+    "access_id": "MTH260142",
+    "hub_url": "mendocino",
+    "institutional_id": "118684",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": false,
     "note": ""
   },
   {
@@ -448,6 +514,17 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "Palomar Community College",
+    "canonical_name": "Palomar Community College",
+    "access_id": "CIS262045",
+    "hub_url": "palomar",
+    "institutional_id": "243647",
+    "id_type": "ipeds_unitid",
+    "match_score": 92,
+    "reviewed": false,
     "note": ""
   },
   {
