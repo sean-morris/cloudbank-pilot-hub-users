@@ -594,6 +594,17 @@
     "note": "corrected from an auto-match to the wrong school (srjc/Santa Rosa Junior College); smc hub added to pilots.json with a placeholder token pending deployment"
   },
   {
+    "sheet_institution": "Santa Rosa Junior College",
+    "canonical_name": "Santa Rosa Junior College",
+    "access_id": "CIS262092",
+    "hub_url": "srjc",
+    "institutional_id": "123013",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Santiago Canyon College",
     "canonical_name": "Santiago Canyon College",
     "access_id": "MTH260087",
