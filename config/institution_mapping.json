@@ -429,6 +429,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "\tMichigan Technological University",
+    "canonical_name": "Michigan Technological University",
+    "access_id": "CIS262082",
+    "hub_url": "mtu",
+    "institutional_id": "171128",
+    "id_type": "ipeds",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "Roster cell has a leading tab, so the exact-match join fails without this row; IPEDS 171128 is Michigan Technological University MI"
+  },
+  {
     "sheet_institution": "MiraCosta College",
     "canonical_name": "MiraCosta College",
     "access_id": "MTH260067",
