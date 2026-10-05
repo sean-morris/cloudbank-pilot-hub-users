@@ -20,6 +20,7 @@ import json
 import sys
 from datetime import datetime
 
+import time
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -91,19 +92,28 @@ def get_users(url, where, token):
         list: List of user dicts.
     """
     all_data = []
-    api_url = f'http://{url}.cloudbank.2i2c.cloud/hub/api'
+    api_url = f'https://{url}.cloudbank.2i2c.cloud/hub/api'
     if url == "mills":
-        api_url = f'http://datahub.{url}.edu/hub/api'
+        api_url = f'https://datahub.{url}.edu/hub/api'
     if where == "icor":
-        api_url = f'http://{url}.jupyter.cal-icor.org/hub/api'
+        api_url = f'https://{url}.jupyter.cal-icor.org/hub/api'
     offset = 0
     while True:
-        r = requests.get(
-            api_url + f'/users?limit=200&offset={offset}',
-            headers={
-                'Authorization': f'token {token}'
-            }
-        )
+        r = None
+        for attempt in range(3):
+            try:
+                r = requests.get(
+                    api_url + f'/users?limit=200&offset={offset}',
+                    headers={
+                        'Authorization': f'token {token}'
+                    },
+                    timeout=30,
+                )
+                break
+            except requests.exceptions.RequestException:
+                if attempt == 2:
+                    raise
+                time.sleep(2 ** attempt)
         if r.status_code == 403:
             raise Exception(f"403 error getting users from {url}")
         if r.status_code != 200:
