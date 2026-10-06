@@ -45,6 +45,19 @@ jobs:
       # the data it could fetch, so the dashboard should not freeze just
       # because one or two hub tokens expired. The job still goes red and
       # Slack still fires below, so the failures stay visible.
+      - name: Lock in completed terms
+        if: always()
+        shell: bash -el {0}
+        run: python scripts/term_archive.py
+
+      - name: Fetch daily / weekly / monthly active users
+        if: always()
+        shell: bash -el {0}
+        env:
+          PROM_USER: ${{ secrets.PROM_USER }}
+          PROM_PASS: ${{ secrets.PROM_PASS }}
+        run: python scripts/active_users.py
+
       - name: Build dashboard
         if: always()
         shell: bash -el {0}
@@ -55,7 +68,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add users.csv otter_standalone_use.csv docs/
+          git add users.csv otter_standalone_use.csv data/ docs/
           git diff --cached --quiet || git commit -m "chore: nightly dashboard update $(date -u +%Y-%m-%d)"
           git push
 

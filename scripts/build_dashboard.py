@@ -157,6 +157,25 @@ recent_sem_labels = {s: format_semester_label(s) for s in recent_sems}
 semester_json = json.dumps(semester_data)
 institutions_json = json.dumps(institutions)
 otter_json = json.dumps(weekly_otter)
+
+# -- Daily / weekly / monthly active users (scripts/active_users.py) --
+def _active(name, key, label, tail=None):
+    path = BASE_DIR / "data" / f"active_{name}.csv"
+    if not path.is_file():
+        return []
+    df = pd.read_csv(path).fillna(0)
+    if tail:
+        df = df.tail(tail)
+    return [
+        {"label": label(r[key]), "cloudbank": int(r.get("cloudbank", 0)), "icor": int(r.get("icor", 0))}
+        for _, r in df.iterrows()
+    ]
+
+active_json = json.dumps({
+    "monthlyChart": _active("monthly", "month", lambda m: pd.Timestamp(m + "-01").strftime("%b %Y")),
+    "weeklyChart": _active("weekly", "week_start", lambda w: pd.Timestamp(w).strftime("%b %-d, %Y"), tail=52),
+    "dailyChart": _active("daily", "date", lambda d: pd.Timestamp(d).strftime("%b %-d"), tail=90),
+})
 recent_sems_json = json.dumps(recent_sems)
 recent_sem_labels_json = json.dumps(recent_sem_labels)
 current_sem_json = json.dumps(current_sem)
@@ -231,6 +250,24 @@ html = f"""<!DOCTYPE html>
   </div>
 
   <div class="card">
+    <h2>Monthly Active Users</h2>
+    <p class="updated">Users active in the 30 days to the end of each month.</p>
+    <canvas id="monthlyChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Weekly Active Users</h2>
+    <p class="updated">Users active each week (Monday to Sunday), last 52 weeks.</p>
+    <canvas id="weeklyChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Daily Active Users</h2>
+    <p class="updated">Users active each day, last 90 days.</p>
+    <canvas id="dailyChart"></canvas>
+  </div>
+
+  <div class="card">
     <h2>Otter Standalone Weekly Usage</h2>
     <canvas id="otterChart"></canvas>
   </div>
@@ -262,6 +299,7 @@ html = f"""<!DOCTYPE html>
     const semesters       = {semester_json};
     const institutions    = {institutions_json};
     const otter           = {otter_json};
+    const active          = {active_json};
     const recentSems      = {recent_sems_json};
     const recentSemLabels = {recent_sem_labels_json};
     const currentSem      = {current_sem_json};
@@ -294,6 +332,26 @@ html = f"""<!DOCTYPE html>
         scales: {{ x: {{ stacked: false }}, y: {{ beginAtZero: true, ticks: {{ precision: 0 }} }} }}
       }}
     }});
+
+    // --- Monthly / weekly / daily active users ---
+    for (const [id, rows] of Object.entries(active)) {{
+      if (!rows.length) continue;
+      new Chart(document.getElementById(id), {{
+        type: "bar",
+        data: {{
+          labels: rows.map(r => r.label),
+          datasets: [
+            {{ label: "CloudBank", data: rows.map(r => r.cloudbank), backgroundColor: "#4e79a7" }},
+            {{ label: "ICOR",      data: rows.map(r => r.icor),      backgroundColor: "#f28e2b" }},
+          ]
+        }},
+        options: {{
+          responsive: true,
+          plugins: {{ legend: {{ position: "top" }} }},
+          scales: {{ y: {{ beginAtZero: true, ticks: {{ precision: 0 }} }} }}
+        }}
+      }});
+    }}
 
     // --- Otter chart ---
     new Chart(document.getElementById("otterChart"), {{
