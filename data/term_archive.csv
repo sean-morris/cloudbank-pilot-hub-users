@@ -22,12 +22,12 @@ CSU East Bay,icor,spring_2026,106.0
 CSU East Bay,icor,summer_2025,3.0
 CSU East Bay,icor,summer_2026,4.0
 CSU Fullerton,icor,fall_2025,100.0
-CSU Fullerton,icor,fall_2026,8.0
+CSU Fullerton,icor,fall_2026,9.0
 CSU Fullerton,icor,spring_2026,6.0
 CSU Fullerton,icor,summer_2025,66.0
 CSU Fullerton,icor,summer_2026,2.0
 CSU Long Beach,icor,fall_2025,33.0
-CSU Long Beach,icor,fall_2026,43.0
+CSU Long Beach,icor,fall_2026,44.0
 CSU Long Beach,icor,spring_2025,9.0
 CSU Long Beach,icor,spring_2026,41.0
 CSU Long Beach,icor,summer_2025,3.0
@@ -42,7 +42,7 @@ CSU Northridge,icor,fall_2025,22.0
 CSU Northridge,icor,fall_2026,1.0
 CSU Northridge,icor,spring_2026,48.0
 CSU Sacramento,icor,fall_2025,152.0
-CSU Sacramento,icor,fall_2026,239.0
+CSU Sacramento,icor,fall_2026,240.0
 CSU Sacramento,icor,spring_2026,232.0
 CSU Sacramento,icor,summer_2025,1.0
 CSU Sacramento,icor,summer_2026,17.0
@@ -134,7 +134,7 @@ Folsom Lake College,icor,fall_2026,28.0
 Folsom Lake College,icor,spring_2026,65.0
 Foothill Community College,cloudbank,fall_2024,1.0
 Foothill Community College,cloudbank,fall_2025,61.0
-Foothill Community College,cloudbank,fall_2026,76.0
+Foothill Community College,cloudbank,fall_2026,79.0
 Foothill Community College,cloudbank,spring_2025,98.0
 Foothill Community College,cloudbank,spring_2026,196.0
 Foothill Community College,cloudbank,summer_2025,100.0
@@ -327,7 +327,7 @@ Tuskegee University,cloudbank,summer_2022,9.0
 Tuskegee University,cloudbank,summer_2023,2.0
 University of Arkansas for Medical Sciences,cloudbank,fall_2026,5.0
 "University of California, Santa Cruz",icor,fall_2025,203.0
-"University of California, Santa Cruz",icor,fall_2026,267.0
+"University of California, Santa Cruz",icor,fall_2026,273.0
 "University of California, Santa Cruz",icor,spring_2026,264.0
 "University of California, Santa Cruz",icor,summer_2025,6.0
 "University of California, Santa Cruz",icor,summer_2026,3.0
