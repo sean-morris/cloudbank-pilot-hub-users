@@ -69,9 +69,13 @@ def load_pilot(hub_url):
     """Some slugs (e.g. "dvc") are reused across clusters — Diablo Valley College has
     both an icor-flavored pilots.json entry and a separate cloudbank one. hub_url in
     config/institution_mapping.json always refers to the cloudbank deployment, so
-    matching on url alone could silently grab the wrong cluster's entry/token."""
+    matching on url alone could silently grab the wrong cluster's entry/token.
+
+    Returns None if no such hub exists, so a stale mapping row costs one institution
+    instead of aborting the whole report — a hub_url that pointed at a real hub when
+    it was reviewed goes stale as soon as that hub is renamed or decommissioned."""
     pilots = json.loads(PILOTS_PATH.read_text())["pilots"]
-    return next(p for p in pilots if p["url"] == hub_url and p["where"] == "cloudbank")
+    return next((p for p in pilots if p["url"] == hub_url and p["where"] == "cloudbank"), None)
 
 
 def hub_users(pilot):
@@ -121,6 +125,14 @@ def build_report(hmac_key):
             continue
 
         pilot = load_pilot(entry["hub_url"])
+        if pilot is None:
+            problems.append(
+                f"'{institution}': {MAPPING_PATH.name} points at hub '{entry['hub_url']}', which "
+                f"has no cloudbank entry in {PILOTS_PATH.name} — the hub was renamed or "
+                f"decommissioned; update the mapping row"
+            )
+            continue
+
         try:
             users = hub_users(pilot)
         except Exception as exc:
