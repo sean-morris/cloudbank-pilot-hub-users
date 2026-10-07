@@ -565,11 +565,11 @@
     "canonical_name": "Pennsylvania State University",
     "access_id": "SEE260017",
     "hub_url": "psu",
-    "institutional_id": "214731",
+    "institutional_id": "214777",
     "id_type": "ipeds_unitid",
-    "match_score": 84,
-    "reviewed": false,
-    "note": "low-confidence IPEDS match (matched against 'Pennsylvania State University-Brandywine PA')"
+    "match_score": 100,
+    "reviewed": true,
+    "note": "Rob Thomson is in the College of Information Sciences and Technology, which is an academic unit of University Park, not a separate IPEDS institution \u2014 IPEDS rolls it up to 214777 (Main Campus). Do NOT let the generator pick this one: 37 Penn State units exist and difflib ranks Brandywine (214731) above Main Campus."
   },
   {
     "sheet_institution": "Reedley College",
