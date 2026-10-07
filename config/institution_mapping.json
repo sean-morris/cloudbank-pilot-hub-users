@@ -536,7 +536,7 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
-    "note": "Now deployed as the \"orangecoast\" hub (previously no matching pilots.json entry existed). Token is a placeholder pending Sean generating a real one."
+    "note": "Now deployed as the \"orangecoast\" hub (previously no matching pilots.json entry existed)."
   },
   {
     "sheet_institution": "Oregon Institute of Technology",
