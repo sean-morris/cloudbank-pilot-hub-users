@@ -62,7 +62,7 @@
     "institutional_id": "110422",
     "id_type": "ipeds_unitid",
     "match_score": 97,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -128,7 +128,7 @@
     "institutional_id": "111939",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -216,7 +216,7 @@
     "institutional_id": "113856",
     "id_type": "ipeds_unitid",
     "match_score": 77,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -315,7 +315,7 @@
     "institutional_id": "115001",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -359,7 +359,7 @@
     "institutional_id": "151351",
     "id_type": "ipeds_unitid",
     "match_score": 97,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -436,7 +436,7 @@
     "institutional_id": "118684",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -469,7 +469,7 @@
     "institutional_id": "118930",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
@@ -554,11 +554,11 @@
     "canonical_name": "Palomar Community College",
     "access_id": "CIS262045",
     "hub_url": "palomar",
-    "institutional_id": "243647",
+    "institutional_id": "120971",
     "id_type": "ipeds_unitid",
     "match_score": 92,
-    "reviewed": false,
-    "note": ""
+    "reviewed": true,
+    "note": "corrected from an auto-match to the wrong institution (243647/Palau Community College PW); Palomar College CA is 120971"
   },
   {
     "sheet_institution": "Pennsylvania State University",
@@ -645,7 +645,7 @@
     "institutional_id": "123013",
     "id_type": "ipeds_unitid",
     "match_score": 100,
-    "reviewed": false,
+    "reviewed": true,
     "note": ""
   },
   {
