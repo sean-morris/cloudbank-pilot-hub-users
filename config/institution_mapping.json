@@ -3,12 +3,12 @@
     "sheet_institution": "Albany High",
     "canonical_name": "Albany High",
     "access_id": "CIS261259",
-    "hub_url": "ahs",
+    "hub_url": "high",
     "institutional_id": "060186000059",
     "id_type": "nces_school_id",
     "match_score": 100,
     "reviewed": true,
-    "note": "K-12 school, not in IPEDS (higher-ed only). Used the NCES Common Core of Data (CCD) School ID instead \u2014 Albany High, Albany City Unified, Albany CA. Confirm with NSF/XDMoD that a CCD School ID is acceptable as institutional_id for K-12 institutions before relying on this."
+    "note": "K-12 school, not in IPEDS (higher-ed only). Used the NCES Common Core of Data (CCD) School ID instead \u2014 Albany High, Albany City Unified, Albany CA. Confirm with NSF/XDMoD that a CCD School ID is acceptable as institutional_id for K-12 institutions before relying on this. Corrected from hub_url \"ahs\", which is not a pilots.json url; the Albany High hub is \"high\""
   },
   {
     "sheet_institution": "Berea College",
@@ -135,12 +135,12 @@
     "sheet_institution": "Chaminade University of Honolulu",
     "canonical_name": "Chaminade University of Honolulu",
     "access_id": "BIO260533",
-    "hub_url": "toledo",
+    "hub_url": "chaminade",
     "institutional_id": "141486",
     "id_type": "ipeds_unitid",
     "match_score": 62,
     "reviewed": true,
-    "note": ""
+    "note": "corrected from an auto-match to the wrong school (toledo/University of Toledo)"
   },
   {
     "sheet_institution": "Chicago State University",
@@ -388,23 +388,23 @@
     "sheet_institution": "Laney College",
     "canonical_name": "Laney College",
     "access_id": "SEE260025",
-    "hub_url": "lavc",
+    "hub_url": "laney",
     "institutional_id": "117247",
     "id_type": "ipeds_unitid",
     "match_score": 80,
-    "reviewed": false,
-    "note": ""
+    "reviewed": true,
+    "note": "corrected from an auto-match to the wrong school (lavc/LA Valley College)"
   },
   {
     "sheet_institution": "Las Positas College",
     "canonical_name": "Las Positas College",
     "access_id": "CIS261913",
-    "hub_url": "shasta",
+    "hub_url": "laspositas",
     "institutional_id": "366401",
     "id_type": "ipeds_unitid",
     "match_score": 73,
     "reviewed": true,
-    "note": ""
+    "note": "corrected from an auto-match to the wrong school (shasta/Shasta College)"
   },
   {
     "sheet_institution": "Marian University",
@@ -674,12 +674,12 @@
     "sheet_institution": "Sierra College",
     "canonical_name": "Sierra College",
     "access_id": "MTH260151",
-    "hub_url": "berea",
+    "hub_url": "sierra",
     "institutional_id": "123341",
     "id_type": "ipeds_unitid",
     "match_score": 81,
-    "reviewed": false,
-    "note": ""
+    "reviewed": true,
+    "note": "corrected from an auto-match to the wrong school (berea/Berea College)"
   },
   {
     "sheet_institution": "Skyline Community College",
