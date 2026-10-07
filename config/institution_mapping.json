@@ -308,6 +308,17 @@
     "note": "pilots.json 'name' field for this hub reads 'George University', which is wrong \u2014 hub url 'georgetown' confirms it's actually Georgetown"
   },
   {
+    "sheet_institution": "Glendale Community College",
+    "canonical_name": "Glendale Community College",
+    "access_id": "MTH260149",
+    "hub_url": "glendale",
+    "institutional_id": "115001",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": false,
+    "note": ""
+  },
+  {
     "sheet_institution": "Harvey Mudd College",
     "canonical_name": "Harvey Mudd College",
     "access_id": "CIS260382",
@@ -646,6 +657,17 @@
     "id_type": "ipeds_unitid",
     "match_score": 100,
     "reviewed": true,
+    "note": ""
+  },
+  {
+    "sheet_institution": "Sierra College",
+    "canonical_name": "Sierra College",
+    "access_id": "MTH260151",
+    "hub_url": "berea",
+    "institutional_id": "123341",
+    "id_type": "ipeds_unitid",
+    "match_score": 81,
+    "reviewed": false,
     "note": ""
   },
   {
