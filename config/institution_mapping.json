@@ -572,6 +572,17 @@
     "note": "corrected from an auto-match to the wrong institution (243647/Palau Community College PW); Palomar College CA is 120971"
   },
   {
+    "sheet_institution": "Pasadena Community College",
+    "canonical_name": "Pasadena City College",
+    "access_id": "CIS262175",
+    "hub_url": "pasadena",
+    "institutional_id": "121044",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "Roster says 'Pasadena Community College'; the institution is Pasadena City College (IPEDS 121044). Do not let the generator pick this: it scores 121044 at 89, only one point above Cascadia Community College WA (439190)."
+  },
+  {
     "sheet_institution": "Pennsylvania State University",
     "canonical_name": "Pennsylvania State University",
     "access_id": "SEE260017",
