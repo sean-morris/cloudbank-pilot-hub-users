@@ -55,6 +55,17 @@
     "note": "matched against 'CUNY Borough of Manhattan Community College NY'"
   },
   {
+    "sheet_institution": "Cal Poly Humboldt",
+    "canonical_name": "Cal Poly Humboldt",
+    "access_id": "SEE260027",
+    "hub_url": "humboldt",
+    "institutional_id": "115755",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS still lists this institution under its pre-2022 name, 'Humboldt State University CA' (115755). The generator cannot find it: its best fuzzy match for 'Cal Poly Humboldt' scores 48, below the 0.6 cutoff, so it would leave institutional_id empty."
+  },
+  {
     "sheet_institution": "California Polytechnic State University, San Luis Obispo",
     "canonical_name": "California Polytechnic State University, San Luis Obispo",
     "access_id": "MCH260078",
