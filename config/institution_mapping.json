@@ -898,8 +898,8 @@
     "institutional_id": "234207",
     "id_type": "ipeds_unitid",
     "match_score": 0,
-    "reviewed": false,
-    "note": "no matching pilots.json hub found; low-confidence IPEDS match (matched against 'Washington and Lee University VA')"
+    "reviewed": true,
+    "note": "No hub: pilot is a quantum resource on AWS, users not reported. IPEDS UnitID 234207 verified against Washington and Lee University, Lexington VA."
   },
   {
     "sheet_institution": "Western Carolina University",
