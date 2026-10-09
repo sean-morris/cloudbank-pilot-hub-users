@@ -297,6 +297,17 @@
     "note": "IPEDS 114716 is Foothill College itself, not the Foothill-De Anza Community College District (114831). De Anza is a separate hub and needs its own entry."
   },
   {
+    "sheet_institution": "Fresno Community College",
+    "canonical_name": "Fresno Community College",
+    "access_id": "OTH260014",
+    "hub_url": "fresno",
+    "institutional_id": "114789",
+    "id_type": "ipeds_unitid",
+    "match_score": 88,
+    "reviewed": false,
+    "note": "low-confidence IPEDS match (matched against 'Fresno City College CA')"
+  },
+  {
     "sheet_institution": "George Washington University",
     "canonical_name": "George Washington University",
     "access_id": "CIS251343",
@@ -878,6 +889,17 @@
     "match_score": 100,
     "reviewed": true,
     "note": "Now deployed as the \"uwyo\" hub (previously no matching pilots.json entry existed). Token is a placeholder pending Sean generating a real one."
+  },
+  {
+    "sheet_institution": "Washington and Lee",
+    "canonical_name": "Washington and Lee",
+    "access_id": "CIS262176",
+    "hub_url": null,
+    "institutional_id": "234207",
+    "id_type": "ipeds_unitid",
+    "match_score": 0,
+    "reviewed": false,
+    "note": "no matching pilots.json hub found; low-confidence IPEDS match (matched against 'Washington and Lee University VA')"
   },
   {
     "sheet_institution": "Western Carolina University",
