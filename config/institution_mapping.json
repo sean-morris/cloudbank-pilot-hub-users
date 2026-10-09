@@ -298,14 +298,14 @@
   },
   {
     "sheet_institution": "Fresno Community College",
-    "canonical_name": "Fresno Community College",
+    "canonical_name": "Fresno City College",
     "access_id": "OTH260014",
     "hub_url": "fresno",
     "institutional_id": "114789",
     "id_type": "ipeds_unitid",
-    "match_score": 88,
-    "reviewed": false,
-    "note": "low-confidence IPEDS match (matched against 'Fresno City College CA')"
+    "match_score": 100,
+    "reviewed": true,
+    "note": "Roster says 'Fresno Community College'; the institution is Fresno City College (IPEDS 114789). Do not let the generator pick a different Fresno: California State University-Fresno (110556) and Fresno Pacific University (114813) are both in IPEDS."
   },
   {
     "sheet_institution": "George Washington University",
