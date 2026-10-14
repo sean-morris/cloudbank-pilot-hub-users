@@ -367,11 +367,11 @@
     "canonical_name": "Illinois Eastern Community Colleges",
     "access_id": "CIS262235",
     "hub_url": "iecc",
-    "institutional_id": "145831",
+    "institutional_id": "443368",
     "id_type": "ipeds_unitid",
-    "match_score": 85,
-    "reviewed": false,
-    "note": "low-confidence IPEDS match (matched against 'Illinois Valley Community College IL')"
+    "match_score": 100,
+    "reviewed": true,
+    "note": "Multi-college district. IPEDS lists a system office (443368) plus four colleges: Frontier 403469, Lincoln Trail 403478, Olney Central 145707, Wabash Valley 403487. The ACCESS allocation, the roster row and the hub are all district-wide (iecc.edu), so the system office is the match. Corrected from an auto-match to 145831 Illinois VALLEY Community College, a different institution. CONFIRM WITH ZACH WILSON if students turn out to be from one specific college; no student has been reported under this id yet."
   },
   {
     "sheet_institution": "Illinois Tech",
