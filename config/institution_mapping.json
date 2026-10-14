@@ -429,6 +429,17 @@
     "note": "corrected from an auto-match to the wrong school (shasta/Shasta College)"
   },
   {
+    "sheet_institution": "Long Beach City College",
+    "canonical_name": "Long Beach City College",
+    "access_id": "MTH260161",
+    "hub_url": "lbcc",
+    "institutional_id": "117645",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "pilots.json names the lbcc hub 'Long Beach Community College'; the institution is Long Beach City College (IPEDS 117645). Not CSU Long Beach (110583), which is a separate Cal-ICOR hub."
+  },
+  {
     "sheet_institution": "Marian University",
     "canonical_name": "Marian University",
     "access_id": "MED260086",
