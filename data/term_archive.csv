@@ -42,7 +42,7 @@ CSU Northridge,icor,fall_2025,22.0
 CSU Northridge,icor,fall_2026,1.0
 CSU Northridge,icor,spring_2026,48.0
 CSU Sacramento,icor,fall_2025,152.0
-CSU Sacramento,icor,fall_2026,240.0
+CSU Sacramento,icor,fall_2026,241.0
 CSU Sacramento,icor,spring_2026,232.0
 CSU Sacramento,icor,summer_2025,1.0
 CSU Sacramento,icor,summer_2026,17.0
@@ -55,7 +55,7 @@ CSU Sonoma,icor,fall_2026,1.0
 Cal Poly Humboldt,cloudbank,fall_2023,9.0
 Cal Poly Humboldt,cloudbank,fall_2024,36.0
 Cal Poly Humboldt,cloudbank,fall_2025,130.0
-Cal Poly Humboldt,cloudbank,fall_2026,120.0
+Cal Poly Humboldt,cloudbank,fall_2026,121.0
 Cal Poly Humboldt,cloudbank,spring_2024,6.0
 Cal Poly Humboldt,cloudbank,spring_2025,36.0
 Cal Poly Humboldt,cloudbank,spring_2026,191.0
@@ -111,7 +111,7 @@ El Camino Community College,cloudbank,fall_2022,6.0
 El Camino Community College,cloudbank,fall_2023,26.0
 El Camino Community College,cloudbank,fall_2024,121.0
 El Camino Community College,cloudbank,fall_2025,94.0
-El Camino Community College,cloudbank,fall_2026,155.0
+El Camino Community College,cloudbank,fall_2026,183.0
 El Camino Community College,cloudbank,spring_2023,16.0
 El Camino Community College,cloudbank,spring_2024,58.0
 El Camino Community College,cloudbank,spring_2025,161.0
@@ -129,12 +129,13 @@ Evergreen Community College,cloudbank,spring_2025,51.0
 Evergreen Community College,cloudbank,spring_2026,41.0
 Evergreen Community College,cloudbank,summer_2025,25.0
 Evergreen Community College,cloudbank,summer_2026,74.0
+Florida Gulf Coast University,cloudbank,fall_2026,1.0
 Folsom Lake College,icor,fall_2025,43.0
 Folsom Lake College,icor,fall_2026,28.0
 Folsom Lake College,icor,spring_2026,65.0
 Foothill Community College,cloudbank,fall_2024,1.0
 Foothill Community College,cloudbank,fall_2025,61.0
-Foothill Community College,cloudbank,fall_2026,80.0
+Foothill Community College,cloudbank,fall_2026,81.0
 Foothill Community College,cloudbank,spring_2025,98.0
 Foothill Community College,cloudbank,spring_2026,196.0
 Foothill Community College,cloudbank,summer_2025,100.0
@@ -327,7 +328,7 @@ Tuskegee University,cloudbank,summer_2022,9.0
 Tuskegee University,cloudbank,summer_2023,2.0
 University of Arkansas for Medical Sciences,cloudbank,fall_2026,5.0
 "University of California, Santa Cruz",icor,fall_2025,203.0
-"University of California, Santa Cruz",icor,fall_2026,274.0
+"University of California, Santa Cruz",icor,fall_2026,275.0
 "University of California, Santa Cruz",icor,spring_2026,264.0
 "University of California, Santa Cruz",icor,summer_2025,6.0
 "University of California, Santa Cruz",icor,summer_2026,3.0
