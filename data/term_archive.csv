@@ -17,7 +17,7 @@ CSU Chico,icor,summer_2026,4.0
 CSU Dominguez Hills,icor,fall_2026,2.0
 CSU Dominguez Hills,icor,summer_2026,2.0
 CSU East Bay,icor,fall_2025,48.0
-CSU East Bay,icor,fall_2026,197.0
+CSU East Bay,icor,fall_2026,198.0
 CSU East Bay,icor,spring_2026,106.0
 CSU East Bay,icor,summer_2025,3.0
 CSU East Bay,icor,summer_2026,4.0
@@ -55,7 +55,7 @@ CSU Sonoma,icor,fall_2026,1.0
 Cal Poly Humboldt,cloudbank,fall_2023,9.0
 Cal Poly Humboldt,cloudbank,fall_2024,36.0
 Cal Poly Humboldt,cloudbank,fall_2025,130.0
-Cal Poly Humboldt,cloudbank,fall_2026,121.0
+Cal Poly Humboldt,cloudbank,fall_2026,123.0
 Cal Poly Humboldt,cloudbank,spring_2024,6.0
 Cal Poly Humboldt,cloudbank,spring_2025,36.0
 Cal Poly Humboldt,cloudbank,spring_2026,191.0
@@ -91,7 +91,7 @@ College of San Mateo,cloudbank,summer_2026,1.0
 Community College San Francisco,cloudbank,fall_2023,65.0
 Community College San Francisco,cloudbank,fall_2024,128.0
 Community College San Francisco,cloudbank,fall_2025,142.0
-Community College San Francisco,cloudbank,fall_2026,141.0
+Community College San Francisco,cloudbank,fall_2026,142.0
 Community College San Francisco,cloudbank,spring_2023,2.0
 Community College San Francisco,cloudbank,spring_2024,109.0
 Community College San Francisco,cloudbank,spring_2025,106.0
@@ -111,7 +111,7 @@ El Camino Community College,cloudbank,fall_2022,6.0
 El Camino Community College,cloudbank,fall_2023,26.0
 El Camino Community College,cloudbank,fall_2024,121.0
 El Camino Community College,cloudbank,fall_2025,94.0
-El Camino Community College,cloudbank,fall_2026,183.0
+El Camino Community College,cloudbank,fall_2026,193.0
 El Camino Community College,cloudbank,spring_2023,16.0
 El Camino Community College,cloudbank,spring_2024,58.0
 El Camino Community College,cloudbank,spring_2025,161.0
@@ -171,6 +171,7 @@ High School,cloudbank,spring_2025,65.0
 High School,cloudbank,spring_2026,24.0
 High School,cloudbank,summer_2025,2.0
 High School,cloudbank,summer_2026,1.0
+Illinois Eastern Community Colleges,cloudbank,fall_2026,1.0
 LA Valley College,cloudbank,spring_2025,1.0
 Laney Community College,cloudbank,fall_2023,21.0
 Laney Community College,cloudbank,fall_2024,24.0
