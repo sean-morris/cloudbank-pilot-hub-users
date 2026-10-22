@@ -550,6 +550,17 @@
     "note": "Norco College (2001 Third St, Norco CA), one of three colleges in the Riverside Community College District; IPEDS UnitID 460464 confirmed on NCES College Navigator. pilots.json names the hub 'Norco Community College'."
   },
   {
+    "sheet_institution": "North Carolina State University",
+    "canonical_name": "North Carolina State University",
+    "access_id": "BIO260602",
+    "hub_url": "ncsu",
+    "institutional_id": "199193",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 199193 is \"North Carolina State University at Raleigh\"; the roster sheet and hub use the shorter \"North Carolina State University\"."
+  },
+  {
     "sheet_institution": "Nova SouthEastern University",
     "canonical_name": "Nova SouthEastern University",
     "access_id": "NAIRR260240",
