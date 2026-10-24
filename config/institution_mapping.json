@@ -539,6 +539,17 @@
     "note": "corrected from an auto-match to the wrong school (lavc/LA Valley College)"
   },
   {
+    "sheet_institution": "New Mexico State University",
+    "canonical_name": "New Mexico State University",
+    "access_id": "CHE260228",
+    "hub_url": "nmsu",
+    "institutional_id": "188030",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 188030 is \"New Mexico State University-Main Campus\" (Las Cruces), not the Alamogordo, Carlsbad, Dona Ana or Grants branch campuses; the roster sheet and hub use \"New Mexico State University\"."
+  },
+  {
     "sheet_institution": "Norco College",
     "canonical_name": "Norco College",
     "access_id": "MTH260163",
