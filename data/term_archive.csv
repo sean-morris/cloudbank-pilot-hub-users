@@ -27,7 +27,7 @@ CSU Fullerton,icor,spring_2026,6.0
 CSU Fullerton,icor,summer_2025,66.0
 CSU Fullerton,icor,summer_2026,2.0
 CSU Long Beach,icor,fall_2025,33.0
-CSU Long Beach,icor,fall_2026,44.0
+CSU Long Beach,icor,fall_2026,45.0
 CSU Long Beach,icor,spring_2025,9.0
 CSU Long Beach,icor,spring_2026,41.0
 CSU Long Beach,icor,summer_2025,3.0
@@ -67,7 +67,7 @@ Carnegie Mellon University,cloudbank,spring_2026,9.0
 Chabot CC,cloudbank,fall_2025,10.0
 Chabot CC,cloudbank,spring_2026,1.0
 Chaffey College,cloudbank,fall_2025,70.0
-Chaffey College,cloudbank,fall_2026,75.0
+Chaffey College,cloudbank,fall_2026,76.0
 Chaffey College,cloudbank,spring_2026,46.0
 Chaffey College,cloudbank,summer_2025,19.0
 Chaffey College,cloudbank,summer_2026,1.0
@@ -111,7 +111,7 @@ El Camino Community College,cloudbank,fall_2022,6.0
 El Camino Community College,cloudbank,fall_2023,26.0
 El Camino Community College,cloudbank,fall_2024,121.0
 El Camino Community College,cloudbank,fall_2025,94.0
-El Camino Community College,cloudbank,fall_2026,194.0
+El Camino Community College,cloudbank,fall_2026,196.0
 El Camino Community College,cloudbank,spring_2023,16.0
 El Camino Community College,cloudbank,spring_2024,58.0
 El Camino Community College,cloudbank,spring_2025,161.0
@@ -172,7 +172,7 @@ High School,cloudbank,spring_2026,24.0
 High School,cloudbank,summer_2025,2.0
 High School,cloudbank,summer_2026,1.0
 Illinois Eastern Community Colleges,cloudbank,fall_2026,11.0
-Indiana University Bloomington,cloudbank,fall_2026,3.0
+Indiana University Bloomington,cloudbank,fall_2026,7.0
 LA Valley College,cloudbank,spring_2025,1.0
 Laney Community College,cloudbank,fall_2023,21.0
 Laney Community College,cloudbank,fall_2024,24.0
@@ -183,6 +183,7 @@ Laney Community College,cloudbank,spring_2025,71.0
 Laney Community College,cloudbank,spring_2026,120.0
 Laney Community College,cloudbank,summer_2025,2.0
 Laney Community College,cloudbank,summer_2026,5.0
+Las Positas College,cloudbank,fall_2026,1.0
 Long Beach Community College,cloudbank,fall_2025,2.0
 Long Beach Community College,cloudbank,fall_2026,16.0
 Long Beach Community College,cloudbank,summer_2026,3.0
