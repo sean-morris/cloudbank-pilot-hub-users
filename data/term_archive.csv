@@ -17,7 +17,7 @@ CSU Chico,icor,summer_2026,4.0
 CSU Dominguez Hills,icor,fall_2026,2.0
 CSU Dominguez Hills,icor,summer_2026,2.0
 CSU East Bay,icor,fall_2025,48.0
-CSU East Bay,icor,fall_2026,201.0
+CSU East Bay,icor,fall_2026,202.0
 CSU East Bay,icor,spring_2026,106.0
 CSU East Bay,icor,summer_2025,3.0
 CSU East Bay,icor,summer_2026,4.0
@@ -34,7 +34,7 @@ CSU Long Beach,icor,summer_2025,3.0
 CSU Long Beach,icor,summer_2026,2.0
 CSU Los Angeles,icor,summer_2026,1.0
 CSU Monterey Bay,icor,fall_2025,254.0
-CSU Monterey Bay,icor,fall_2026,556.0
+CSU Monterey Bay,icor,fall_2026,557.0
 CSU Monterey Bay,icor,spring_2026,487.0
 CSU Monterey Bay,icor,summer_2025,5.0
 CSU Monterey Bay,icor,summer_2026,35.0
@@ -111,7 +111,7 @@ El Camino Community College,cloudbank,fall_2022,6.0
 El Camino Community College,cloudbank,fall_2023,26.0
 El Camino Community College,cloudbank,fall_2024,121.0
 El Camino Community College,cloudbank,fall_2025,94.0
-El Camino Community College,cloudbank,fall_2026,196.0
+El Camino Community College,cloudbank,fall_2026,198.0
 El Camino Community College,cloudbank,spring_2023,16.0
 El Camino Community College,cloudbank,spring_2024,58.0
 El Camino Community College,cloudbank,spring_2025,161.0
@@ -172,7 +172,7 @@ High School,cloudbank,spring_2026,24.0
 High School,cloudbank,summer_2025,2.0
 High School,cloudbank,summer_2026,1.0
 Illinois Eastern Community Colleges,cloudbank,fall_2026,11.0
-Indiana University Bloomington,cloudbank,fall_2026,7.0
+Indiana University Bloomington,cloudbank,fall_2026,9.0
 LA Valley College,cloudbank,spring_2025,1.0
 Laney Community College,cloudbank,fall_2023,21.0
 Laney Community College,cloudbank,fall_2024,24.0
@@ -213,14 +213,14 @@ MiraCosta College,cloudbank,spring_2026,14.0
 MiraCosta College,cloudbank,summer_2025,8.0
 MiraCosta College,cloudbank,summer_2026,5.0
 Mission College,cloudbank,fall_2025,14.0
-Mission College,cloudbank,fall_2026,1.0
+Mission College,cloudbank,fall_2026,2.0
 Mission College,cloudbank,spring_2024,1.0
 Mission College,cloudbank,spring_2026,1.0
 Monmouth University,cloudbank,fall_2026,17.0
 Monterey Peninsula College,icor,fall_2026,1.0
 Moreno Community College,cloudbank,fall_2024,10.0
 Moreno Community College,cloudbank,fall_2025,24.0
-Moreno Community College,cloudbank,fall_2026,29.0
+Moreno Community College,cloudbank,fall_2026,30.0
 Moreno Community College,cloudbank,spring_2025,22.0
 Moreno Community College,cloudbank,spring_2026,22.0
 Moreno Community College,cloudbank,summer_2025,4.0
@@ -331,7 +331,7 @@ Tuskegee University,cloudbank,summer_2022,9.0
 Tuskegee University,cloudbank,summer_2023,2.0
 University of Arkansas for Medical Sciences,cloudbank,fall_2026,5.0
 "University of California, Santa Cruz",icor,fall_2025,203.0
-"University of California, Santa Cruz",icor,fall_2026,275.0
+"University of California, Santa Cruz",icor,fall_2026,276.0
 "University of California, Santa Cruz",icor,spring_2026,264.0
 "University of California, Santa Cruz",icor,summer_2025,6.0
 "University of California, Santa Cruz",icor,summer_2026,3.0
