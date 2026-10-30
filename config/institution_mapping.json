@@ -341,6 +341,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Green River College",
+    "canonical_name": "Green River College",
+    "access_id": "CIS262417",
+    "hub_url": "greenriver",
+    "institutional_id": "235343",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 235343, Auburn WA; listed in the master under both \"Green River College\" and the former \"Green River Community College\", same unitid. The roster sheet and hub use \"Green River College\"."
+  },
+  {
     "sheet_institution": "Harvey Mudd College",
     "canonical_name": "Harvey Mudd College",
     "access_id": "CIS260382",
