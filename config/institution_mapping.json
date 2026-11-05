@@ -462,6 +462,17 @@
     "note": "pilots.json names the lbcc hub 'Long Beach Community College'; the institution is Long Beach City College (IPEDS 117645). Not CSU Long Beach (110583), which is a separate Cal-ICOR hub."
   },
   {
+    "sheet_institution": "Los Angeles Community College",
+    "canonical_name": "Los Angeles City College",
+    "access_id": "MTH260173",
+    "hub_url": "lacc",
+    "institutional_id": "117788",
+    "id_type": "ipeds_unitid",
+    "match_score": 91,
+    "reviewed": true,
+    "note": "roster calls it \"Los Angeles Community College\"; the hub is lacc (cluster.yaml display_name \"Los Angeles City College\", contact @lacitycollege.edu). IPEDS 117788 is LA City College \u2014 not 117681, the LACCD district office. The other LACCD colleges (elac, lavc, wlac) are tracked as separate institutions."
+  },
+  {
     "sheet_institution": "Marian University",
     "canonical_name": "Marian University",
     "access_id": "MED260086",
