@@ -979,6 +979,17 @@
     "note": "No hub: pilot is a quantum resource on AWS, users not reported. IPEDS UnitID 234207 verified against Washington and Lee University, Lexington VA."
   },
   {
+    "sheet_institution": "Weber State University",
+    "canonical_name": "Weber State University",
+    "access_id": "CIS262571",
+    "hub_url": "weber",
+    "institutional_id": "230782",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS UnitID 230782 verified against Weber State University, Ogden UT. Ogden-Weber Technical College (230490) is a different institution in the same city and is the trap here."
+  },
+  {
     "sheet_institution": "Western Carolina University",
     "canonical_name": "Western Carolina University",
     "access_id": "MTH260089",
