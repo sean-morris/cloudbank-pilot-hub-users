@@ -34,7 +34,7 @@ CSU Long Beach,icor,summer_2025,3.0
 CSU Long Beach,icor,summer_2026,2.0
 CSU Los Angeles,icor,summer_2026,1.0
 CSU Monterey Bay,icor,fall_2025,254.0
-CSU Monterey Bay,icor,fall_2026,573.0
+CSU Monterey Bay,icor,fall_2026,574.0
 CSU Monterey Bay,icor,spring_2026,487.0
 CSU Monterey Bay,icor,summer_2025,5.0
 CSU Monterey Bay,icor,summer_2026,35.0
@@ -135,7 +135,7 @@ Folsom Lake College,icor,fall_2026,29.0
 Folsom Lake College,icor,spring_2026,65.0
 Foothill Community College,cloudbank,fall_2024,1.0
 Foothill Community College,cloudbank,fall_2025,61.0
-Foothill Community College,cloudbank,fall_2026,83.0
+Foothill Community College,cloudbank,fall_2026,84.0
 Foothill Community College,cloudbank,spring_2025,98.0
 Foothill Community College,cloudbank,spring_2026,196.0
 Foothill Community College,cloudbank,summer_2025,100.0
@@ -177,7 +177,7 @@ LA Valley College,cloudbank,spring_2025,1.0
 Laney Community College,cloudbank,fall_2023,21.0
 Laney Community College,cloudbank,fall_2024,24.0
 Laney Community College,cloudbank,fall_2025,95.0
-Laney Community College,cloudbank,fall_2026,64.0
+Laney Community College,cloudbank,fall_2026,65.0
 Laney Community College,cloudbank,spring_2024,37.0
 Laney Community College,cloudbank,spring_2025,71.0
 Laney Community College,cloudbank,spring_2026,120.0
@@ -347,6 +347,7 @@ University of Virginia,cloudbank,fall_2026,2.0
 University of Virginia,cloudbank,spring_2026,6.0
 University of Virginia,cloudbank,summer_2026,2.0
 University of Wyoming,cloudbank,summer_2026,1.0
+Weber State University,cloudbank,fall_2026,1.0
 Weber State University,cloudbank,summer_2026,1.0
 West LA College,cloudbank,fall_2023,7.0
 West LA College,cloudbank,fall_2024,15.0
