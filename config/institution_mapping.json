@@ -473,6 +473,17 @@
     "note": "roster calls it \"Los Angeles Community College\"; the hub is lacc (cluster.yaml display_name \"Los Angeles City College\", contact @lacitycollege.edu). IPEDS 117788 is LA City College \u2014 not 117681, the LACCD district office. The other LACCD colleges (elac, lavc, wlac) are tracked as separate institutions."
   },
   {
+    "sheet_institution": "Los Angeles Valley College",
+    "canonical_name": "Los Angeles Valley College",
+    "access_id": "MTH260189",
+    "hub_url": "lavc",
+    "institutional_id": "117733",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS UnitID 117733 verified against Los Angeles Valley College, Valley Glen CA. Not 117681, the LACCD district office; lacc, elac and wlac are separate institutions."
+  },
+  {
     "sheet_institution": "Marian University",
     "canonical_name": "Marian University",
     "access_id": "MED260086",
