@@ -517,6 +517,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Miami University, Ohio",
+    "canonical_name": "Miami University",
+    "access_id": "CIS262592",
+    "hub_url": "miamioh",
+    "institutional_id": "204024",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 204024 is \"Miami University-Oxford\" (Oxford OH), the main campus where the PI is based, not the Hamilton (204006) or Middletown (204015) regional campuses; unrelated to the University of Miami FL (135726). The roster sheet uses \"Miami University, Ohio\" to disambiguate."
+  },
+  {
     "sheet_institution": "Michigan Technological University",
     "canonical_name": "Michigan Technological University",
     "access_id": "CIS262082",
