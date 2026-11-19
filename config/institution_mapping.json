@@ -220,6 +220,17 @@
     "note": "official IPEDS name is 'City College of San Francisco'"
   },
   {
+    "sheet_institution": "Contra Costa College",
+    "canonical_name": "Contra Costa College",
+    "access_id": "CIS262643",
+    "hub_url": "ccc",
+    "institutional_id": "112826",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 112826, San Pablo CA. Not 112817 (Contra Costa Community College District Office) and not 491950 (Contra Costa Medical Career College). Re-launch of the hub removed in 2025; same slug \"ccc\"."
+  },
+  {
     "sheet_institution": "East Los Angeles College",
     "canonical_name": "East Los Angeles College",
     "access_id": "MTH260146",
