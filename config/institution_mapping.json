@@ -209,6 +209,17 @@
     "note": ""
   },
   {
+    "sheet_institution": "Colorado State University",
+    "canonical_name": "Colorado State University-Fort Collins",
+    "access_id": "MTH260196",
+    "hub_url": "colostate",
+    "institutional_id": "126818",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 126818 is the Fort Collins main campus, listed as both \"Colorado State University\" and \"Colorado State University-Fort Collins\". Not Pueblo (128106), Global Campus (476975) or the System Office (446978). PI Trent Pearce, FW552."
+  },
+  {
     "sheet_institution": "Community College San Francisco",
     "canonical_name": "Community College San Francisco",
     "access_id": "MTH260066",
@@ -284,6 +295,17 @@
     "match_score": 100,
     "reviewed": true,
     "note": ""
+  },
+  {
+    "sheet_institution": "Evergreen Valley College",
+    "canonical_name": "Evergreen Valley College",
+    "access_id": "CIS262656",
+    "hub_url": "evc",
+    "institutional_id": "114266",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 114266, San Jose CA. Not 122737 (San Jose-Evergreen Community College District). PI Kathy Jensen, COMSC 028."
   },
   {
     "sheet_institution": "Florida Gulf Coast University",
