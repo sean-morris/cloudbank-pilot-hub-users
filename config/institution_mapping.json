@@ -341,6 +341,17 @@
     "note": "Roster says 'Fresno Community College'; the institution is Fresno City College (IPEDS 114789). Do not let the generator pick a different Fresno: California State University-Fresno (110556) and Fresno Pacific University (114813) are both in IPEDS."
   },
   {
+    "sheet_institution": "Fullerton College",
+    "canonical_name": "Fullerton College",
+    "access_id": "SEE260029",
+    "hub_url": "fullertoncc",
+    "institutional_id": "114859",
+    "id_type": "ipeds_unitid",
+    "match_score": 100,
+    "reviewed": true,
+    "note": "IPEDS 114859, Fullerton CA. Not 110565 (CSU Fullerton, an icor hub) or 120023 (North Orange County CCD). PI Luciano Rodriguez."
+  },
+  {
     "sheet_institution": "George Washington University",
     "canonical_name": "George Washington University",
     "access_id": "CIS251343",
